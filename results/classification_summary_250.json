@@ -1,0 +1,54 @@
+{
+  "source_file": "results/predictions_test250.csv",
+  "case_count": 250,
+  "source_tasks": 50,
+  "class_support": {
+    "CLEAR": 50,
+    "AMBIGUOUS": 200
+  },
+  "accuracy": 0.684,
+  "correct_count": 171,
+  "macro_f1": 0.62124,
+  "per_class": {
+    "CLEAR": {
+      "precision": 0.363636,
+      "recall": 0.64,
+      "f1": 0.463768,
+      "support": 50
+    },
+    "AMBIGUOUS": {
+      "precision": 0.88535,
+      "recall": 0.695,
+      "f1": 0.778711,
+      "support": 200
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "CLEAR",
+      "AMBIGUOUS"
+    ],
+    "values": [
+      [
+        32,
+        18
+      ],
+      [
+        56,
+        139
+      ]
+    ]
+  },
+  "gate": {
+    "actions": {
+      "CLEAR": 88,
+      "AMBIGUOUS": 138,
+      "NEEDS_REVIEW": 24
+    },
+    "accepted": 226,
+    "accepted_correct": 157,
+    "accepted_accuracy": 0.69469,
+    "requires_review": 24
+  },
+  "comparison_note": "The trivial all-AMBIGUOUS predictor has 80% accuracy on this class-imbalanced test set. Gate accepted accuracy excludes abstentions."
+}

@@ -1,0 +1,245 @@
+case_id,task_name,gold_label,gold_binary,requirement,evidence,agent1_label
+75,HumanEval/31,vagueness,AMBIGUOUS,"def is_prime(n):
+    """"""Return true if a number is prime.
+    """"""",a number,AMBIGUOUS
+76,HumanEval/32,clear,CLEAR,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.
+    """"""
+","Moreover, find_zero only takes list xs having even number of coefficients
+and largest non zero coefficient as it guarantees
+a solution.",AMBIGUOUS
+77,HumanEval/32,lexical,AMBIGUOUS,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only one zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it secures
+    a solution.
+    """"""","find_zero only takes list xs having even number of coefficients
+and largest non zero coefficient as it secures
+a solution.",AMBIGUOUS
+79,HumanEval/32,syntactic,AMBIGUOUS,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.
+    """"""","Moreover, find_zero only takes list xs having even number of coefficients
+and largest non zero coefficient as it guarantees
+a solution.",AMBIGUOUS
+80,HumanEval/32,vagueness,AMBIGUOUS,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns a zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees a solution.
+    """"""","Moreover, find_zero only takes list xs having even number of coefficients
+and largest non zero coefficient as it guarantees a solution.",AMBIGUOUS
+84,HumanEval/33,syntactic,AMBIGUOUS,"def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l but sorted.
+    """"""","its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l but sorted.",AMBIGUOUS
+108,HumanEval/52,semantic,AMBIGUOUS,"def below_threshold(l: list, t: int):
+    """"""Return True if numbers in the list l are below threshold t.
+    """"""",numbers in the list l are below threshold t.,AMBIGUOUS
+112,HumanEval/53,lexical,AMBIGUOUS,"def add(x: int, y: int):
+    """"""Combine two numbers x and y
+    """"""",Combine two numbers x and y,AMBIGUOUS
+113,HumanEval/53,semantic,AMBIGUOUS,"def add(x: int, y: int):
+    """"""Combine two values x and y
+    """"""",Combine two values x and y,AMBIGUOUS
+126,HumanEval/65,clear,CLEAR,"
+def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    """"""
+","shift > number of digits, return digits reversed.",AMBIGUOUS
+128,HumanEval/65,semantic,AMBIGUOUS,"def circular_shift(x, shift):
+    """"""Circular shift the digits in the integer x, shift the digits to the right by shift 
+    and return the outcome as a string.
+    If shift > number of digits, reverse the entire sequence of digits.
+    """"""","shift > number of digits, reverse the entire sequence of digits.",AMBIGUOUS
+129,HumanEval/65,syntactic,AMBIGUOUS,"def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string if shift > number of digits, return digits reversed.
+    """"""","shift > number of digits, return digits reversed.",AMBIGUOUS
+130,HumanEval/65,vagueness,AMBIGUOUS,"def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits in a direction by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    """"""","shift > number of digits, return digits reversed.",AMBIGUOUS
+137,HumanEval/73,lexical,AMBIGUOUS,"def smallest_change(arr):
+    """"""
+    Given an array arr of integers, find the minimum number of elements that
+    need to be moved to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In one change, you can change one element to any other element.
+    """"""","one change, you can change one element to any other element.",AMBIGUOUS
+144,HumanEval/76,syntactic,AMBIGUOUS,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x is a simple
+    power of n and false in other cases.
+    x is a simple power of n if n**int=x for some integer
+    """"""",for some integer,AMBIGUOUS
+145,HumanEval/76,vagueness,AMBIGUOUS,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x false in other cases.
+    x is a simple power of n if n**int=x
+    """"""",n**int=x,AMBIGUOUS
+151,HumanEval/85,clear,CLEAR,"
+def add(lst):
+    """"""Given a non-empty list of integers lst. add the even elements that are at odd indices..
+    """"""
+",add the even elements that are at odd indices..,AMBIGUOUS
+153,HumanEval/85,semantic,AMBIGUOUS,"def add(lst):
+    """"""Given a non-empty list of integers lst. Add even elements from odd positions.
+    """"""",odd positions,AMBIGUOUS
+182,HumanEval/110,lexical,AMBIGUOUS,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an adjustment of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of adjusted elements between lst1 and lst2.
+    If it is possible to adjust elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""",There is no limit on the number of adjusted elements between lst1 and lst2.,AMBIGUOUS
+184,HumanEval/110,syntactic,AMBIGUOUS,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers or not.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""",There is no limit on the number of exchanged elements between lst1 and lst2.,AMBIGUOUS
+190,HumanEval/116,vagueness,AMBIGUOUS,"def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array of integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    """"""",It must be implemented like this:,AMBIGUOUS
+192,HumanEval/124,lexical,AMBIGUOUS,"def valid_date(date):
+    """"""You have to write a function which validates a given date string and
+    returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the standard: mm-dd-yyyy
+    """"""",the standard: mm-dd-yyyy,AMBIGUOUS
+193,HumanEval/124,semantic,AMBIGUOUS,"def valid_date(date):
+    """"""You have to write a function which confirms a given date string as valid
+    or invalid and returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be formatted as: mm-dd-yyyy
+    """"""",The date should be formatted as: mm-dd-yyyy,AMBIGUOUS
+197,HumanEval/128,lexical,AMBIGUOUS,"def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by aggregate of all signs
+    of each number in the array, represented by 1, -1 or 0.
+    """"""",aggregate of all signs,AMBIGUOUS
+206,HumanEval/132,clear,CLEAR,"
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+",[[]],AMBIGUOUS
+216,HumanEval/140,clear,CLEAR,"
+def fix_spaces(text):
+    """"""
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, 
+    then replace all consecutive spaces with - 
+    """"""
+","if a string has more than 2 consecutive spaces, then replace all consecutive spaces with -",AMBIGUOUS
+234,HumanEval/155,syntactic,AMBIGUOUS,"def even_odd_count(num):
+    """"""Given an integer return a tuple that has the number of even digits and odd respectively.
+    """"""",tuple that has the number of even digits and odd,AMBIGUOUS
+235,HumanEval/155,vagueness,AMBIGUOUS,"def even_odd_count(num):
+    """"""Given a number. return a tuple that has the number of even and odd digits respectively.
+    The description does not otherwise specify which interpretation should be used.
+    """"""",The description does not otherwise specify which interpretation should be used.,AMBIGUOUS
+241,HumanEval/159,clear,CLEAR,"
+def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    """"""
+","if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.",AMBIGUOUS
+243,HumanEval/159,semantic,AMBIGUOUS,"def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    The intended semantic scope of this requirement is not otherwise specified.
+    """"""","if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.",AMBIGUOUS

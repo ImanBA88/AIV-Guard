@@ -1,0 +1,1913 @@
+case_id,task_name,entry_point,requirement,gold_label,gold_binary,gold_explanation
+1,HumanEval/2,truncate_number,"
+
+def truncate_number(number: float) -> float:
+    """""" Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    """"""
+",clear,CLEAR,
+2,HumanEval/2,truncate_number,"def truncate_number(number: float) -> float:
+    """""" Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal places of the number.
+    """"""",lexical,AMBIGUOUS,"""decimal places"": Could mean the count of digits after the decimal point (e.g., 1 for 3.5) or the fractional value (e.g., 0.5). Ambiguous here, as it shifts the expected output from a numeric remainder to a digit count or specific digits."
+3,HumanEval/2,truncate_number,"def truncate_number(number: float) -> float:
+    """""" Given a positive floating point number, it can be decomposed into
+    an integer part (largest integer smaller than or equal to given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    """"""",semantic,AMBIGUOUS,"The phrase ""largest integer smaller than or equal to given number"" is semantically ambiguous—it can mean (A) the integer part obtained by truncating the decimal, which corresponds to the floor function (e.g., for 3.5, the largest integer smaller than 3.5 is 3), or (B) the integer part obtained by rounding down or keeping the integer if the number is already an integer (e.g., for 3.5, this would imply returning 3 as well, but for 3.0, it would imply returning 3, which is equal to the number), each interpretation affecting the understanding of the decomposition process."
+4,HumanEval/2,truncate_number,"def truncate_number(number: float) -> float:
+    """""" Given a positive floating point number it can be decomposed into
+    an integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""it can be decomposed into an integer part (largest integer smaller than given number) and decimals (leftover part always smaller than 1)"": it is unclear whether the parenthetical descriptions apply to both ""integer part"" and ""decimals"" collectively or separately to each term."
+5,HumanEval/2,truncate_number,"def truncate_number(number: float) -> float:
+    """""" Given a positive floating point number, it can be decomposed into
+    and integer part and decimals.
+
+    Return the decimal part of the number.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""Given a positive floating point number, it can be decomposed into an integer part and decimals."" The ambiguity lies in the lack of a clear definition of what the integer part and decimals are.
+
+Ambiguous Explanation:
+The omitted description ""largest integer smaller than given number"" for the integer part creates ambiguity about what the integer part is defined as, leading different implementers to interpret it based on their own understanding. It could be interpreted as the nearest integer to the given number or the smallest integer larger than the given number, which would significantly impact the returned decimal part."
+6,HumanEval/7,filter_by_substring,"from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given substring
+    """"""
+",clear,CLEAR,
+7,HumanEval/7,filter_by_substring,"from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones that contain given pattern
+    """"""",lexical,AMBIGUOUS,"""pattern"": Could mean a literal sequence of characters (a substring) or a regular expression. Ambiguous here, as it suggests the function might support complex regex matching instead of just simple substring containment."
+8,HumanEval/7,filter_by_substring,"from typing import List
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones containing the specified substring
+    """"""",semantic,AMBIGUOUS,"The phrase ""containing the specified substring"" is semantically ambiguous—it can mean (A) strings that include the substring as a contiguous sequence of characters (e.g., 'abc' contains 'ab'), or (B) strings that include all characters of the substring in any order or position within the string (e.g., 'bacd' contains 'ad'), each interpretation leading to different code and results."
+9,HumanEval/7,filter_by_substring,"from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings only for ones with given substring contained
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""with given substring contained"": it is unclear whether ""contained"" modifies ""given substring"" (meaning the substring must be contained in the strings) or ""ones"" (meaning the strings themselves must be contained within some larger context)."
+10,HumanEval/7,filter_by_substring,"from typing import List
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """""" Filter an input list of strings for ones that might contain given substring
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Explanation:
+The phrase ""might contain given substring"" introduces uncertainty. It is unclear whether the function should return strings that definitely contain the substring or if it should also include strings that could potentially contain the substring under certain conditions or interpretations. This could lead to different implementations based on personal interpretations."
+11,HumanEval/10,make_palindrome,"
+
+def is_palindrome(string: str) -> bool:
+    """""" Test if given string is a palindrome 
+    """"""
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """""" Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    """"""
+",clear,CLEAR,
+12,HumanEval/10,make_palindrome,"def is_palindrome(string: str) -> bool:
+    """""" Test if given string is a palindrome 
+    """"""
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """""" Find the shortest palindrome that contains a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    """"""",lexical,AMBIGUOUS,"""contains"": Could mean the supplied string must be a prefix of the resulting palindrome, or it could mean the supplied string can be a substring anywhere within the resulting palindrome. Ambiguous here, as the broader interpretation (substring anywhere) conflicts with the specific algorithm described, which only finds palindromes *beginning with* the supplied string."
+13,HumanEval/10,make_palindrome,"def is_palindrome(string: str) -> bool:
+    """""" Test whether the supplied string is a palindrome 
+    """"""
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """""" Return the shortest palindrome that can be made starting with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    """"""",semantic,AMBIGUOUS,"The ambiguous phrase ""starting with a supplied string"" can be interpreted as (A) the palindrome must begin with the supplied string as its initial sequence, or (B) the palindrome can be formed using the supplied string as a base, but the supplied string does not necessarily need to be the starting sequence, leading to different interpretations of the function's behavior."
+14,HumanEval/10,make_palindrome,"def is_palindrome(string: str) -> bool:
+    """""" Test if given string is a palindrome 
+    """"""
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """""" Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous sentence structure in docstring: it is unclear whether ""that comes before the palindromic suffix"" modifies only the immediately preceding phrase (""string prefix"") or the entire preceding instruction (""Append to the end of the string reverse of a string prefix"")."
+15,HumanEval/10,make_palindrome,"def is_palindrome(string: str) -> bool:
+    """""" Test if given string could be a palindrome 
+    """"""
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """"""Find the shortest possible palindrome related to the supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Phrase:
+""Find the shortest possible palindrome related to the supplied string.""
+
+Ambiguous Explanation:
+The phrase ""related to the supplied string"" introduces ambiguity as it does not specify how the resulting palindrome should relate to the input string. It could be interpreted as either using all characters from the input string or only a subset of them, leading to different implementation outcomes."
+16,HumanEval/11,string_xor,"from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """""" Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    """"""
+",clear,CLEAR,
+17,HumanEval/11,string_xor,"from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """""" Input are two strings a and b consisting only of 1s and 0s.
+    Perform bitwise XOR on these inputs and return result also as a string.
+    """"""",lexical,AMBIGUOUS,"""bitwise"": Could mean operating on the binary representation of integer numbers, or operating character-by-character on strings representing binary digits. Ambiguous here, as ""bitwise"" typically applies to integer types, potentially suggesting an incorrect interpretation that the string inputs should first be converted to integers before the XOR operation, rather than operating directly on the characters."
+18,HumanEval/11,string_xor,"from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """""" Input are two strings a and b consisting only of 1s and 0s.
+    Perform XOR on these strings and return result also as a string.
+    """"""",semantic,AMBIGUOUS,"The phrase ""Perform XOR on these strings"" is semantically ambiguous—it can mean (A) performing a character-wise XOR operation assuming each character represents a bit (e.g., XORing corresponding characters of the strings directly), or (B) interpreting the entire strings as binary numbers and then performing a bitwise XOR operation on those numbers, each interpretation leading to different code and results."
+19,HumanEval/11,string_xor,"from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """""" Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return the result also as a string of 1s and 0s.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""consisting only of 1s and 0s"": it is unclear whether this applies to both input strings a and b collectively (i.e., their combined characters must be 1s and 0s) or individually (each string must independently consist of only 1s and 0s)."
+20,HumanEval/11,string_xor,"def string_xor(a: str, b: str) -> str:
+    """""" Input are two strings a and b.
+    Perform binary XOR on these inputs and return result also as a string.
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Phrase: ""Input are two strings a and b.""
+
+
+The revised description omits the specification that the input strings should consist only of 1s and 0s. This could lead to confusion about what types of strings can be input and whether or not the function can handle strings including other characters."
+21,HumanEval/12,longest,"from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """""" Out of list of strings, return the longest one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    """"""
+",clear,CLEAR,
+22,HumanEval/12,longest,"from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """""" Out of list of strings, return the longest one. Return the leading one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    """"""",lexical,AMBIGUOUS,"""leading"": Could mean the first element encountered in the list or the lexicographically smallest element among the longest ones. Ambiguous here, as it obscures whether the tie-breaking rule relies on the input order or alphabetical order."
+23,HumanEval/12,longest,"from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """""" Out of list of strings, return the longest one. Return the first one or the first one alphabetically in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    """"""",semantic,AMBIGUOUS,"The phrase ""the first one or the first one alphabetically"" is semantically ambiguous—it can mean (A) the first one that appears in the list, prioritizing the order of input (e.g., longest(['bb', 'aa']) → 'bb'), or (B) the first one alphabetically among those with the same length (e.g., longest(['bb', 'aa']) → 'aa'), each interpretation leading to different code and results."
+24,HumanEval/12,longest,"from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """""" Out of list of strings return the longest one, in case of multiple
+    strings of the same length the first one. Return None in case the input list is empty.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase placement: it is unclear whether ""in case of multiple strings of the same length the first one"" modifies ""return the longest one"" or stands as an independent instruction. This could be interpreted as either (1) returning the longest string and, separately, returning the first string in case of multiple same-length strings, or (2) returning the longest string, with the first one being chosen in case of ties."
+25,HumanEval/12,longest,"from typing import List, Optional
+
+def longest(strings: List[str]) -> Optional[str]:
+    """""" Out of list of strings, return a long one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""a long one,"" which lacks a clear definition, leading different implementers to interpret what constitutes a long string based on their own understanding.
+
+Ambiguous Explanation:
+The modified ""a long one"" phrase obscures whether the function should return the longest string or any string considered long. This allows developers to implement different behaviors based on their interpretation."
+26,HumanEval/13,greatest_common_divisor,"
+
+def greatest_common_divisor(a: int, b: int) -> int:
+    """""" Return a greatest common divisor of two integers a and b
+    """"""
+",clear,CLEAR,
+27,HumanEval/13,greatest_common_divisor,"def greatest_common_divisor(a: int, b: int) -> int:
+    """""" Return a greatest common divisor of two numbers a and b
+    """"""",lexical,AMBIGUOUS,"""numbers"": Could mean integers, floating-point numbers, or other numerical types. Ambiguous here, as the greatest common divisor algorithm is typically defined specifically for integers, and using ""numbers"" might incorrectly suggest applicability to floats or other types."
+28,HumanEval/13,greatest_common_divisor,"def greatest_common_divisor(a: int, b: int) -> int:
+    """""" Return the greatest common divisor of the two integers a and b
+    """"""",semantic,AMBIGUOUS,"The phrase ""the greatest common divisor of the two integers"" is semantically ambiguous—it can mean (A) the greatest common divisor considering only positive integers (e.g., gcd(25, 15) → 5), or (B) the greatest common divisor considering both positive and negative integers (e.g., gcd(-25, -15) → -5), each interpretation leading to different code and results."
+29,HumanEval/13,greatest_common_divisor,"def greatest_common_divisor(a: int, b: int) -> int:
+    """""" Return a greatest common divisor of two integers a and b
+    """"""",syntactic,AMBIGUOUS,"Ambiguous article ""a"": it is unclear whether ""a greatest common divisor"" refers to any arbitrary GCD (implying multiple possible correct answers) or the unique GCD (standard mathematical definition where there's only one correct answer)."
+30,HumanEval/13,greatest_common_divisor,"def greatest_common_divisor(a: int, b: int) -> int:
+    """""" Return one of the common divisors of two integers a and b
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""one of the common divisors,"" which lacks a clear definition, leading to different interpretations of the function's desired result.
+
+Ambiguous Explanation:
+The modified ""one of the common divisors"" phrase obscures whether the function should return the greatest common divisor or any common divisor, allowing developers to implement different behaviors based on their interpretation."
+31,HumanEval/16,count_distinct_characters,"
+
+def count_distinct_characters(string: str) -> int:
+    """""" Given a string, find out how many distinct characters (regardless of case) does it consist of
+    """"""
+",clear,CLEAR,
+32,HumanEval/16,count_distinct_characters,"def count_distinct_characters(string: str) -> int:
+    """""" Given a string, find out how many distinct figures (regardless of case) does it consist of
+    """"""",lexical,AMBIGUOUS,"""figures"": Could mean numerals (0-9) or characters in general (letters, symbols, digits). Ambiguous here, as it might suggest counting only digits instead of all distinct characters shown in the examples."
+33,HumanEval/16,count_distinct_characters,"def count_distinct_characters(string: str) -> int:
+    """""" Given a string, find out how many distinct characters does it consist of
+    """"""",semantic,AMBIGUOUS,"By removing the crucial phrase ""regardless of case"", a natural ambiguity is introduced: should the function be case-sensitive or case-insensitive? This ambiguity leads to two different valid interpretations:(A) Case-sensitive: 'xyzXYZ' → 6 distinct characters (x, y, z, X, Y, Z are all considered different)(B) Case-insensitive: 'xyzXYZ' → 3 distinct characters (x/X, y/Y, z/Z are considered the same)This is a common source of confusion in real-world programming, as different use cases may require different handling of character case."
+34,HumanEval/16,count_distinct_characters,"def count_distinct_characters(string: str) -> int:
+    """""" Given a string find out how many distinct characters regardless of case does it consist of
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase structure: it is unclear whether ""regardless of case"" modifies ""how many distinct characters"" (meaning the counting method ignores case) or ""does it consist of"" (meaning the string's composition ignores case)."
+35,HumanEval/16,count_distinct_characters,"def count_distinct_characters(string: str) -> int:
+    """""" Given a string, find out how many distinct elements does it consist of
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Phrase: ""distinct elements""
+
+The ambiguity arises from the phrase ""distinct elements,"" which lacks clear definition. In a string context, ""elements"" could be interpreted as individual characters, words, or even distinct sequences of characters. This could lead to different implementations based on the developer's interpretation of what constitutes an ""element"" in a string."
+36,HumanEval/17,parse_music,"from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+
+",clear,CLEAR,
+37,HumanEval/17,parse_music,"from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+",lexical,AMBIGUOUS,"""element"": Could mean a musical note or any item in the input string. Ambiguous here, as it's unclear whether every character or only specific note representations should be considered when determining the duration."
+38,HumanEval/17,parse_music,"from typing import List
+
+def parse_music(music_string: str) -> List[int]:
+",semantic,AMBIGUOUS,"The phrase ""how many beats each note may last"" is semantically ambiguous—it can mean (A) the potential range of beats a note might last, suggesting variability or possibility in duration (e.g., a note could last between 1 to 4 beats), or (B) the specific, deterministic number of beats a note lasts according to a fixed legend (e.g., 'o' always lasts 4 beats), each interpretation leading to different expectations of the function's output."
+39,HumanEval/17,parse_music,"from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """"""Parse a string representing musical notes into beat durations.
+    The attachment of the phrase about how many beats each note lasts is not otherwise specified.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""how many beats each note lasts"": it is unclear whether ""each"" applies to the collective duration of all notes (""how many beats all notes last together"") or to individual note durations (""how many beats each individual note lasts"")."
+40,HumanEval/17,parse_music,"def parse_music(music_string: str) -> List[int]:
+",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""a string representing musical notes"", which lacks a clear definition of the format of the music string.
+
+Ambiguous Explanation:
+The modified ""a string representing musical notes"" phrase obscures whether the musical notes are represented in a special ASCII format or not, allowing developers to implement different behaviors based on their interpretation."
+41,HumanEval/18,how_many_times,"
+
+def how_many_times(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count overlaping cases.
+    """"""
+",clear,CLEAR,
+42,HumanEval/18,how_many_times,"def how_many_times(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string. Count relevant cases.
+    """"""",lexical,AMBIGUOUS,"""relevant"": Could mean overlapping occurrences (as implied by the examples), non-overlapping occurrences, or occurrences meeting some other unspecified criteria. Ambiguous here because it fails to specify the precise counting method (overlapping vs. non-overlapping), unlike the original description which explicitly mentioned ""overlapping""."
+43,HumanEval/18,how_many_times,"def how_many_times(string: str, substring: str) -> int:
+    """""" Determine the number of instances a given substring can be found in the original string. 
+    """"""",semantic,AMBIGUOUS,"The phrase ""instances a given substring can be found"" is semantically ambiguous—it can mean (A) the total number of occurrences of the substring within the string, including overlaps (e.g., in 'aaaa', 'aa' occurs 3 times: positions 0-1, 1-2, and 2-3), or (B) the total number of non-overlapping occurrences of the substring within the string (e.g., in 'aaaa', 'aa' would occur 2 times: positions 0-1 and 2-3), each interpretation leading to different code and results."
+44,HumanEval/18,how_many_times,"def how_many_times(string: str, substring: str) -> int:
+    """""" Find how many times a given substring can be found in the original string Count overlaping cases.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase placement of ""Count overlaping cases"": it is unclear whether this phrase modifies ""Find how many times"" (indicating how to count) or is a separate instruction (to count overlapping cases as an additional operation)."
+45,HumanEval/18,how_many_times,"def how_many_times(string: str, substring: str) -> int:
+    """""" Determine the presence of a given substring in the original string. Count overlaping cases.
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Explanation:
+The ambiguous phrase ""Determine the presence of a given substring"" could be interpreted as simply checking whether the substring exists within the original string or it could mean to count how many times the substring occurs. The ambiguity lies in what exactly ""determining the presence"" is supposed to entail."
+46,HumanEval/24,largest_divisor,"
+
+def largest_divisor(n: int) -> int:
+    """""" For a given number n, find the largest number that divides n evenly, smaller than n
+    """"""
+",clear,CLEAR,
+47,HumanEval/24,largest_divisor,"def largest_divisor(n: int) -> int:
+    """""" For a given number n, find the largest figure that divides n evenly, smaller than n
+    """"""",lexical,AMBIGUOUS,"""figure"": Could mean a numerical digit, a number, or a shape/diagram. Ambiguous here, as it might suggest looking for a shape or a single digit instead of the intended numerical divisor."
+48,HumanEval/24,largest_divisor,"from typing import List
+
+def factorize(n: int) -> List[int]:
+    """""" Return the list containing factors of the given integer in the order from smallest to largest.
+    Each of the factors should be listed number of times corresponding to how many times it appears in factorization.
+    Input number should be equal to the product of all factors
+    """"""",semantic,AMBIGUOUS,"The phrase ""factors of the given integer"" is semantically ambiguous—it can mean (A) the prime factors of the integer (e.g., factorize(70) → [2, 5, 7]), or (B) all factors including non-prime ones (e.g., factorize(8) might be interpreted as [1, 2, 4, 8]), each interpretation leading to different code and results."
+49,HumanEval/24,largest_divisor,"def largest_divisor(n: int) -> int:
+    """""" For a given number n find the largest number that divides n evenly smaller than n
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase grouping: it is ambiguous whether ""smaller than n"" modifies ""the largest number"" (meaning the largest divisor must be smaller than n) or ""divides n evenly"" (meaning the division result must be smaller than n)."
+50,HumanEval/24,largest_divisor,"def largest_divisor(n: int) -> int:
+    """""" For a given number n, find a large number that divides n evenly, smaller than n
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""a large number,"" which lacks a clear definition, leading to different interpretations of what constitutes a ""large"" number. 
+
+Ambiguous Explanation:
+The modified phrase ""a large number"" obscures the specific requirement of finding the ""largest"" number that divides n evenly. This could lead to a broad range of valid solutions, as what constitutes a ""large"" number is subjective and can vary greatly depending on the context and the specific number n."
+51,HumanEval/25,factorize,"from typing import List
+
+
+def factorize(n: int) -> List[int]:
+    """""" Return list of prime factors of given integer in the order from smallest to largest.
+    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+    Input number should be equal to the product of all factors
+    """"""
+",clear,CLEAR,
+52,HumanEval/25,factorize,"from typing import List
+
+
+def factorize(n: int) -> List[int]:
+    """""" Return list of key factors of given integer in the order from smallest to largest.
+    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+    Input number should be equal to the product of all factors
+    """"""",lexical,AMBIGUOUS,"""key"": Could mean ""important"" or ""significant"" factors. Ambiguous here, as it replaces the specific mathematical term ""prime"" with a vague adjective, making it unclear whether the function should return *all* prime factors (as the examples suggest) or only factors deemed ""important"" based on some unspecified criteria."
+53,HumanEval/25,factorize,"from typing import List
+
+def remove_duplicates(numbers: List[int]) -> List[int]:
+    """""" From a list of integers, remove duplicate occurrences, preserving the initial order of the remaining elements.
+    """"""",semantic,AMBIGUOUS,"The phrase ""remove duplicate occurrences"" is semantically ambiguous—it can mean (A) removing all instances of elements that occur more than once, leaving only elements that appear exactly once (e.g., [1, 3, 4] from [1, 2, 3, 2, 4]), or (B) reducing multiple occurrences of any element to a single occurrence while maintaining the order (e.g., [1, 2, 3, 4] from [1, 2, 3, 2, 4]), each interpretation leading to different code and results."
+54,HumanEval/25,factorize,"from typing import List
+
+
+def factorize(n: int) -> List[int]:
+    """""" Return list of prime factors of given integer in the order from smallest to largest each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+    Input number should be equal to the product of all factors
+    """"""",syntactic,AMBIGUOUS,"Ambiguous sentence structure: it is unclear whether ""each of the factors should be listed number of times corresponding to how many times it appeares in factorization"" is a separate requirement or a continuation of the ""order from smallest to largest"" clause."
+55,HumanEval/25,factorize,"def factorize(n: int) -> List[int]:
+    """""" Return list of prime factors of given integer in the order from smallest to largest.
+    Each of the factors should be listed as per its appearance in factorization.
+    Input number should be equal to the product of all factors
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""as per its appearance in factorization,"" which can be interpreted in different ways, leading to different implementations based on the developer's understanding.
+
+Ambiguous Explanation:
+The phrase ""as per its appearance in factorization"" is unclear in the context of how many times the prime factor should be listed. It can be interpreted as listing each prime factor once regardless of how many times it appears in the factorization, or listing each prime factor the exact number of times it appears in the factorization. This ambiguity could lead to different implementations and, potentially, different results."
+56,HumanEval/27,flip_case,"
+
+def flip_case(string: str) -> str:
+    """""" For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
+    """"""
+",clear,CLEAR,
+57,HumanEval/27,flip_case,"def flip_case(string: str) -> str:
+    """""" For a given string, invert lowercase characters to uppercase and uppercase to lowercase.
+    """"""",lexical,AMBIGUOUS,"""invert"": Could mean changing the case (lowercase to uppercase, uppercase to lowercase) or reversing the order of characters. Ambiguous here, as it might suggest reversing the string's character sequence instead of just changing the letter case."
+58,HumanEval/27,flip_case,"def flip_case(string: str) -> str:
+    """""" For a given string, reverse the case of all characters.
+    """"""",semantic,AMBIGUOUS,"The phrase ""reverse the case"" is ambiguous—it can mean (A) inverting each character's case individually, so lowercase becomes uppercase and uppercase becomes lowercase (e.g., 'Hello' → 'hELLO'), or (B) reversing the order of characters in the string and then changing their case (e.g., 'Hello' → 'OLLEh'), or even (C) reversing only the positions of uppercase and lowercase characters while maintaining their original case (e.g., 'HeLLo' → 'LoLHe')."
+59,HumanEval/27,flip_case,"def flip_case(string: str) -> str:
+    """""" For a given string flip lowercase characters to uppercase and uppercase to lowercase.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""For a given string flip"": it is unclear whether ""flip"" is part of the introductory phrase (""For a given string flip"") or the start of the operation description (""flip lowercase characters...""). This could lead to confusion about whether ""flip"" is a noun (referring to a type of string) or a verb (the action to perform)."
+60,HumanEval/27,flip_case,"def flip_case(string: str) -> str:
+    """""" For a given string, flip characters to the opposite case.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""flip characters to the opposite case,"" which lacks clarity on what constitutes the ""opposite case"" for non-alphabetical characters.
+
+Ambiguous Explanation:
+The term ""opposite case"" is unclear for characters that do not have a case, such as numbers and special characters. This could lead to different interpretations and implementations, such as ignoring these characters or applying some other transformation."
+61,HumanEval/28,concatenate,"from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """""" Concatenate list of strings into a single string
+    """"""
+",clear,CLEAR,
+62,HumanEval/28,concatenate,"from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """""" Combine list of strings into a single string
+    """"""",lexical,AMBIGUOUS,"""Combine"": Could mean joining end-to-end (concatenation), interleaving, merging based on some logic, or mixing elements in other ways. Ambiguous here because ""Combine"" is a more general term than ""Concatenate"" and doesn't uniquely specify the operation as simple sequential joining."
+63,HumanEval/28,concatenate,"from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """""" Combine strings from the list into a cohesive single string
+    """"""",semantic,AMBIGUOUS,"The phrase ""cohesive single string"" is semantically ambiguous—it can mean (A) a string where elements are concatenated without any separators, maintaining their original order (e.g., concatenate(['a', 'b', 'c']) → 'abc'), or (B) a string where elements are combined with some form of logical connection or separator (e.g., concatenate(['a', 'b', 'c']) → 'a-b-c'), each interpretation leading to different code and results."
+64,HumanEval/28,concatenate,"from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """""" Concatenate into a single string list of strings
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ordering in ""Concatenate into a single string list of strings"": it is unclear whether ""list of strings"" is the object being concatenated (modifying ""single string"") or the result of concatenation (modifying ""into a single string"")."
+65,HumanEval/28,concatenate,"def concatenate(strings: List[str]) -> str:
+    """""" Concatenate some of the list of strings into a single string
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""some of the list of strings,"" which lacks a clear definition, leading different implementers to interpret how many and which strings from the list should be concatenated.
+
+Ambiguous Explanation:
+The added ""some of"" phrase obscures whether all or only certain strings from the list should be concatenated, allowing developers to implement different behaviors based on their interpretation."
+66,HumanEval/30,get_positive,"
+
+def get_positive(l: list):
+    """"""Return only positive numbers in the list.
+    """"""
+",clear,CLEAR,
+67,HumanEval/30,get_positive,"def get_positive(l: list):
+    """"""Return only significant numbers in the list.
+    """"""",lexical,AMBIGUOUS,"""significant"": Could mean statistically significant, large/important, or simply non-zero. Ambiguous here, as the examples demonstrate the function returns strictly positive numbers (>0), making ""significant"" a misleading term for the actual filtering logic."
+68,HumanEval/30,get_positive,"def get_positive(l: list):
+    """"""Return the list containing only positive numbers.
+    """"""",semantic,AMBIGUOUS,"The phrase ""the list containing only positive numbers"" is semantically ambiguous—it can mean (A) a new list that includes only the positive numbers from the original list (e.g., [x for x in l if x > 0] → [2, 5, 6]), or (B) modifying the original list in-place to keep only positive numbers, altering its content directly, each interpretation leading to different code and results."
+69,HumanEval/30,get_positive,"def get_positive(l: list):
+    """"""Return only positive numbers in the list that are.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""that are"": it is unclear whether ""that are"" refers back to ""only positive numbers"" (redundant clarification) or introduces an incomplete condition (missing what the numbers ""are"")."
+70,HumanEval/30,get_positive,"def get_positive(l: list):
+    """"""Return only numbers in the list.
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Explanation:
+The ambiguity arises from the phrase ""Return only numbers in the list,"" which lacks a clear distinction on what kind of numbers should be returned. This could be interpreted as either returning all numbers, including negative numbers, zero, and positive numbers, or following the original function's intention, which is to return only positive numbers. This vagueness could lead to different coding implementations and behaviors."
+71,HumanEval/31,is_prime,"
+
+def is_prime(n):
+    """"""Return true if a given number is prime, and false otherwise.
+    """"""
+",clear,CLEAR,
+72,HumanEval/31,is_prime,"def is_prime(n):
+    """"""Return true if a given figure is prime, and false otherwise.
+    """"""",lexical,AMBIGUOUS,"""figure"": Could mean a numerical value or a geometric shape. Ambiguous here, as it might incorrectly suggest the function operates on geometric shapes rather than just numbers."
+73,HumanEval/31,is_prime,"def is_prime(n):
+    """"""Return true for a number that is only divisible by itself and one, and false otherwise.
+    """"""",semantic,AMBIGUOUS,"The phrase ""only divisible by itself and one"" is semantically ambiguous—it can mean (A) a number that has exactly two distinct positive divisors (1 and itself), which is the correct definition of a prime number, or (B) a number that is not divisible by any other number except itself and one, which could mislead to include numbers like 1, leading to incorrect results."
+74,HumanEval/31,is_prime,"def is_prime(n):
+    """"""Return true if a given number is prime and false otherwise.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous conjunction ""and"": it is unclear whether ""and"" connects the entire condition (""if a given number is prime and false otherwise"") or just the two adjacent phrases (""prime and false""), creating potential confusion about the return value logic."
+75,HumanEval/31,is_prime,"def is_prime(n):
+    """"""Return true if a number is prime.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the omission of the phrase ""and false otherwise"". 
+
+Ambiguous Explanation:
+The modified description ""Return true if a number is prime"" doesn't specify what should be returned when the number is not prime. This could lead to different interpretations among developers, some might return false, others might return null or some specific error message."
+76,HumanEval/32,find_zero,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.
+    """"""
+",clear,CLEAR,
+77,HumanEval/32,find_zero,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only one zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it secures
+    a solution.
+    """"""",lexical,AMBIGUOUS,"Secures could mean either (1) mathematically ensures a root exists (true) or (2) computationally stabilizes/favors a particular root (false), creating ambiguity about whether it refers to input constraints or output selection behavior."
+78,HumanEval/32,find_zero,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at a specific point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only one zero point, even if there are many.
+    Additionally, find_zero only takes a list xs having an odd number of coefficients 
+    and largest non zero coefficient as it guarantees a solution.
+    """"""",semantic,AMBIGUOUS,"The phrase ""largest non zero coefficient"" is semantically ambiguous—it can mean (A) the coefficient with the largest absolute value among all non-zero coefficients (e.g., for [-6, 11, -6, 1], that would be 11), or (B) the highest-order coefficient that is non-zero (e.g., for [-6, 11, -6, 1], that would be 1), each interpretation leading to different assumptions about the polynomial and its roots."
+79,HumanEval/32,find_zero,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""only only zero point"": it is unclear whether this means ""only one zero point"" (emphasizing uniqueness) or ""only zero point"" (suggesting there's exactly one zero point to be returned, without emphasizing uniqueness)."
+80,HumanEval/32,find_zero,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns a zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees a solution.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""find_zero returns a zero point, even if there are many."" 
+
+
+The phrase does not clearly specify which zero point it will return when multiple zero points exist. This can lead to different interpretations and implementations, with some understanding it as returning the first zero point found, while others may interpret it as returning the smallest or largest zero point."
+81,HumanEval/33,sort_third,"
+
+def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l, but sorted.
+    """"""
+",clear,CLEAR,
+82,HumanEval/33,sort_third,"def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three reflect
+    the values of the corresponding indicies of l, but sorted.
+    """"""",lexical,AMBIGUOUS,"""reflect"": Could mean derived from, based on, or simply related to. Ambiguous here, as it obscures whether the values at the specified indices in the new list l' must be the *exact same* values as in the original list l (just sorted), or if they could be different values that are merely *based on* or *related to* the original ones before sorting."
+83,HumanEval/33,sort_third,"def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is identical to l in the indices that are not divisible by three, while its values at the indices that are divisible by three are equivalent 
+    to the values of the corresponding indices of l, but sorted.
+    """"""",semantic,AMBIGUOUS,"The phrase ""equivalent to the values of the corresponding indices of l, but sorted"" is semantically ambiguous—it can mean (A) sorting only the values at the indices divisible by three while keeping other values unchanged (e.g., treating elements at indices 0, 3, 6, etc., as separate sublists to sort), or (B) sorting all values of l and then placing them back at indices divisible by three, each interpretation leading to different code and results."
+84,HumanEval/33,sort_third,"def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l but sorted.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase: ""to the values of the corresponding indicies of l but sorted"" - it is ambiguous whether ""but sorted"" modifies ""the values"" (meaning the values are sorted separately from their original positions) or ""the corresponding indicies of l"" (meaning the indices themselves are sorted)."
+85,HumanEval/33,sort_third,"def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is similar to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l, but sorted.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the term ""similar"" which is not clearly defined, leading to different interpretations of how the returned list should be structured.
+
+Ambiguous Explanation:
+The phrase ""l' is similar to l in the indicies that are not divisible by three"" is unclear, as ""similar"" could mean that the elements are merely in the same order, have the same values, or have some other unspecified form of resemblance. This could lead to various implementations based on developers' individual interpretations of ""similar""."
+86,HumanEval/34,unique,"
+
+def unique(l: list):
+    """"""Return sorted unique elements in a list
+    """"""
+",clear,CLEAR,
+87,HumanEval/34,unique,"def unique(l: list):
+    """"""Return sorted key elements in a list
+    """"""",lexical,AMBIGUOUS,"""key"": Could mean important/significant elements, elements used as keys for sorting/lookup (like in a dictionary or database), or potentially a specific subset based on some undefined criteria. Ambiguous here because it replaces the clear term ""unique"", making it unclear whether the function should return only ""important"" elements (undefined), elements acting as keys, or still unique elements (as the example suggests, contradicting the description)."
+88,HumanEval/34,unique,"def unique(l: list):
+    """"""Return a sorted list of unique elements
+    """"""",semantic,AMBIGUOUS,"The phrase ""sorted list of unique elements"" is semantically ambiguous—it can mean (A) a list sorted after filtering elements that occur only once (e.g., sorted([x for x in l if l.count(x) == 1]) → [0, 2, 9, 123]), or (B) a sorted list of all distinct elements (e.g., sorted(list(set(l))) → [0, 2, 3, 5, 9, 123]), each interpretation leading to different code and results."
+89,HumanEval/34,unique,"def unique(l: list):
+    """"""Sort the list and return the unique elements in it
+    """"""",syntactic,AMBIGUOUS,"Ambiguous ""it"": it is unclear whether ""it"" refers to the original list object mentioned at the start of the command, or to the new, transformed list object that results from the preceding ""Sort the list"" clause."
+90,HumanEval/34,unique,"def unique(l: list):
+    """"""Return unique elements in a list
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Explanation:
+The absence of the word ""sorted"" in the ambiguous description introduces ambiguity in the code description. It leaves room for interpretation regarding the order in which the unique elements should be returned, allowing developers to return the unique elements in any order, not necessarily sorted."
+91,HumanEval/38,decode_cyclic,"
+
+def encode_cyclic(s: str):
+    """"""
+    returns encoded string by cycling groups of three characters.
+    """"""
+    # split string to groups. Each of length 3.
+    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]
+    # cycle elements in each group. Unless group has fewer elements than 3.
+    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]
+    return """".join(groups)
+
+
+def decode_cyclic(s: str):
+    """"""
+    takes as input string encoded with encode_cyclic function. Returns decoded string.
+    """"""
+",clear,CLEAR,
+92,HumanEval/38,decode_cyclic,"def encode_cyclic(s: str):
+    """"""
+    returns encoded string by shifting groups of three characters.
+    """"""
+    # split string to groups. Each of length 3.
+    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]
+    # cycle elements in each group. Unless group has fewer elements than 3.
+    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]
+    return """".join(groups)
+
+
+def decode_cyclic(s: str):
+    """"""
+    takes as input string encoded with encode_cyclic function. Returns decoded string.
+    """"""",lexical,AMBIGUOUS,"""shifting"": Could mean cyclically shifting characters within a group (as the code does), shifting the position of the entire group, or shifting the character values (like a Caesar cipher). Ambiguous here because it doesn't specify the *type* of shift, unlike the original ""cycling"", obscuring the specific left-rotation operation (`abc` -> `bca`) performed on characters within each group of three."
+93,HumanEval/38,decode_cyclic,"def encode_cyclic(s: str):
+    """"""
+    returns encoded string by cycling groups of three characters in the string.
+    """"""
+    # split string to groups. Each of length 3.
+    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]
+    # cycle elements in each group. Unless group has fewer elements than 3.
+    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]
+    return """".join(groups)
+
+
+def decode_cyclic(s: str):
+    """"""
+    takes as input string encoded with encode_cyclic function. Returns decoded string.
+    """"""",semantic,AMBIGUOUS,"The phrase ""cycling groups of three characters in the string"" is semantically ambiguous—it can mean (A) rearranging the characters within each group of three by shifting them one position to the left (e.g., 'abc' becomes 'bca'), or (B) rotating the groups themselves in the string, which would imply a different approach to encoding (e.g., 'abcdef' with groups 'abc' and 'def' could become 'defabc'), each interpretation leading to different code and results."
+94,HumanEval/38,decode_cyclic,"def encode_cyclic(s: str):
+    """"""
+    returns encoded string by cycling groups of three characters each.
+    """"""
+    # split string to groups. Each of length 3.
+    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]
+    # cycle elements in each group. Unless group has fewer elements than 3.
+    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]
+    return """".join(groups)
+
+
+def decode_cyclic(s: str):
+    """"""
+    takes as input string encoded with encode_cyclic function. Returns decoded string.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""cycling groups of three characters each"": it is unclear whether ""each"" modifies ""groups"" (meaning every group has exactly three characters) or ""characters"" (meaning every character is cycled within groups of three)."
+95,HumanEval/38,decode_cyclic,"def encode_cyclic(s: str):
+    """"""
+    returns encoded string by cycling groups of characters.
+    """"""
+    # split string to groups. Each of length 3.
+    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]
+    # cycle elements in each group. Unless group has fewer elements than 3.
+    groups = [(group[1:] + group[0]) if len(group) == 3 else group for group in groups]
+    return """".join(groups)
+
+
+def decode_cyclic(s: str):
+    """"""
+    takes as input string encoded with encode_cyclic function. Returns decoded string.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""cycling groups of characters,"" which lacks a clear definition, leading different implementers to interpret how many characters should be cycled based on their own understanding.
+
+Ambiguous Explanation:
+The modified ""cycling groups of characters"" phrase obscures whether groups of three or more/less characters should be cycled, allowing developers to implement different behaviors based on their interpretation."
+96,HumanEval/41,car_race_collision,"
+
+def car_race_collision(n: int):
+    """"""
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right;  simultaneously, a different set of n cars
+    are driving right to left.   The two sets of cars start out being very far from
+    each other.  All cars move in the same speed.  Two cars are said to collide
+    when a car that's moving left to right hits a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the number of such collisions.
+    """"""
+",clear,CLEAR,
+97,HumanEval/41,car_race_collision,"def car_race_collision(n: int):
+    """"""
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right;  simultaneously, a different set of n cars
+    are driving right to left.   The two sets of cars start out being very far from
+    each other.  All cars move in the same speed.  Two cars are said to collide
+    when a car that's moving left to right hits a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the record of such collisions.
+    """"""",lexical,AMBIGUOUS,"""record"": Could mean the total count/number of collisions, or a detailed log/list specifying each individual collision event. Ambiguous here, as it's unclear whether the output should be a single integer (count) or a collection detailing each collision."
+98,HumanEval/41,car_race_collision,"def car_race_collision(n: int):
+    """"""
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right; simultaneously, a different set of n cars
+    are driving right to left. The two sets of cars start out being very far from
+    each other. All cars move at the same speed. Two cars are said to collide
+    when a car that's moving left to right meets a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the number of such ongoing collisions.
+    """"""",semantic,AMBIGUOUS,"The phrase ""ongoing collisions"" is semantically ambiguous—it can mean (A) collisions that are continuously happening over time, suggesting a dynamic or repeated interaction, or (B) the total number of collisions occurring over the entire period the cars are on the road, suggesting a static count of collision events, each interpretation leading to different understandings of the function's output."
+99,HumanEval/41,car_race_collision,"def car_race_collision(n: int):
+    """"""
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right;  simultaneously, a different set of n cars
+    are driving right to left.   The two sets of cars start out being very far from
+    each other.  All cars move in the same speed.  Two cars are said to collide
+    when a car that's moving left to right hits a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the number of such collisions between the cars moving left to right and right to left.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""between the cars moving left to right and right to left"": it is unclear whether ""between"" refers to collisions exclusively between left-to-right and right-to-left cars, or if it could also include collisions within the same direction groups (though the context suggests the former)."
+100,HumanEval/41,car_race_collision,"def car_race_collision(n: int):
+    """"""
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right;  simultaneously, a different set of n cars
+    are driving right to left.   The two sets of cars start out being very far from
+    each other.  All cars move at their usual speed.  Two cars are said to collide
+    when a car that's moving left to right encounters a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the number of such encounters.
+    """"""",vagueness,AMBIGUOUS,"The phrase ""their usual speed"" is ambiguous because it doesn’t specify whether all cars share the same speed or each keeps its own, leaving their relative velocities—and thus collision conditions—unclear."
+101,HumanEval/51,remove_vowels,"
+
+def remove_vowels(text):
+    """"""
+    remove_vowels is a function that takes string and returns string without vowels.
+    """"""
+",clear,CLEAR,
+102,HumanEval/51,remove_vowels,"def remove_vowels(text):
+    """"""
+    remove_vowels is a function that takes string and returns string without vocalization.
+    """"""",lexical,AMBIGUOUS,"""vocalization"":can refer to any sound production, including vowels, consonants, or even animal calls, making it ambiguous and not solely indicative of vowels in certain contexts."
+103,HumanEval/51,remove_vowels,"def remove_vowels(text):
+    """"""
+    remove_vowels is a function that takes a string and returns the string where all instances of vowels are removed.
+    """"""",semantic,AMBIGUOUS,"The phrase ""all instances of vowels"" is semantically ambiguous—it can mean (A) all occurrences of vowels, regardless of their case (i.e., both lowercase and uppercase vowels are removed), or (B) all occurrences of lowercase vowels only, potentially treating uppercase vowels differently, each interpretation leading to different code and results."
+104,HumanEval/51,remove_vowels,"def remove_vowels(text):
+    """"""
+    remove_vowels is a function that takes string and returns without vowels string.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""returns without vowels string"": it is unclear whether ""without vowels"" modifies ""returns"" (indicating the action of returning is done without vowels) or ""string"" (indicating the returned value is a string without vowels)."
+105,HumanEval/51,remove_vowels,"def remove_vowels(text):
+    """"""
+    remove_vowels is a function that takes string and returns string.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises because ""returns string"" omits the key detail that vowels are removed, making the function’s behavior unclear."
+106,HumanEval/52,below_threshold,"
+
+def below_threshold(l: list, t: int):
+    """"""Return True if all numbers in the list l are below threshold t.
+    """"""
+",clear,CLEAR,
+107,HumanEval/52,below_threshold,"def below_threshold(l: list, t: int):
+    """"""Return True if all numbers in the list l are under threshold t.
+    """"""",lexical,AMBIGUOUS,"""under"": Could mean strictly less than (<) or less than or equal to (<=). Ambiguous here, as it slightly obscures whether the threshold value itself is included or excluded."
+108,HumanEval/52,below_threshold,"def below_threshold(l: list, t: int):
+    """"""Return True if numbers in the list l are below threshold t.
+    """"""",semantic,AMBIGUOUS,"The phrase ""numbers in the list l are below threshold t"" is semantically ambiguous—it can mean (A) all numbers in the list must be below the threshold t for the function to return True, or (B) any number in the list being below the threshold t is sufficient for the function to return True, each interpretation leading to different code and results."
+109,HumanEval/52,below_threshold,"def below_threshold(l: list, t: int):
+    """"""Return True if all numbers in the list l are below the threshold t.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous interpretation of ""below"": it is unclear whether ""below"" means strictly less than (<) or less than or equal to (<=) the threshold t."
+110,HumanEval/52,below_threshold,"def below_threshold(l: list, t: int):
+    """"""Return True if some numbers in the list l are below threshold t.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""some numbers,"" which lacks a clear definition, leading different implementers to interpret when to return True based on their own understanding.
+
+Ambiguous Explanation:
+The modified ""some numbers"" phrase obscures whether the function should return True if any number is below the threshold or if all numbers should be below the threshold. This allows developers to implement different behaviors based on their interpretation."
+111,HumanEval/53,add,"
+
+def add(x: int, y: int):
+    """"""Add two numbers x and y
+    """"""
+",clear,CLEAR,
+112,HumanEval/53,add,"def add(x: int, y: int):
+    """"""Combine two numbers x and y
+    """"""",lexical,AMBIGUOUS,"""Combine"": Could mean mathematical addition, string concatenation, merging into a collection, or other forms of joining. Ambiguous here, as it doesn't explicitly state the operation is addition, even though the examples imply it."
+113,HumanEval/53,add,"def add(x: int, y: int):
+    """"""Combine two values x and y
+    """"""",semantic,AMBIGUOUS,"The phrase ""Combine two values x and y"" is semantically ambiguous—it can mean (A) performing an arithmetic addition of the two values (e.g., add(2, 3) → 5, add(5, 7) → 12), or (B) concatenating or merging two values in a non-arithmetic manner (e.g., concatenating strings or merging lists), each interpretation leading to different code and results."
+114,HumanEval/53,add,"def add(x: int, y: int):
+    """"""Add two numbers x and y together or separately
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""together or separately"": it is unclear whether it modifies the entire action ""Add two numbers x and y"" (implying two possible addition methods) or is a standalone alternative meaning (implying the function could either add or return the numbers separately)."
+115,HumanEval/53,add,"def add(x: int, y: int):
+    """"""Combine two numbers x and y
+    The description does not otherwise specify which interpretation should be used.
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Explanation:
+The vagueness arises from the word ""Combine"" which could mean either addition, multiplication, concatenation, or any other form of combination. This may lead to different implementations based on interpretation, unlike the original description that clearly specifies the operation as ""Add""."
+116,HumanEval/57,monotonic,"
+
+def monotonic(l: list):
+    """"""Return True is list elements are monotonically increasing or decreasing.
+    """"""
+",clear,CLEAR,
+117,HumanEval/57,monotonic,"def monotonic(l: list):
+    """"""Return True if list elements are strictly increasing or decreasing.
+    """"""",lexical,AMBIGUOUS,"""strictly"": Could mean requiring each element to be greater/less than the previous (no equality), or emphasize a consistent direction while allowing equal elements. Ambiguous here, as it may incorrectly exclude non-strictly monotonic lists (e.g., [1, 2, 2, 3]) if interpreted technically."
+118,HumanEval/57,monotonic,"def monotonic(l: list):
+    """"""Return True if list elements form a monotonic sequence of increasing or decreasing values.
+    """"""",semantic,AMBIGUOUS,"The phrase ""monotonic sequence of increasing or decreasing values"" is semantically ambiguous—it can mean (A) a sequence that is strictly increasing or decreasing, where each successive element is greater or lesser than the preceding one (e.g., [1, 2, 3] or [3, 2, 1]), or (B) a sequence that is non-decreasing or non-increasing, where each successive element is greater than or equal to or less than or equal to the preceding one (e.g., [1, 1, 2, 2] or [3, 3, 2, 2]), each interpretation leading to different code and results."
+119,HumanEval/57,monotonic,"def monotonic(l: list):
+    """"""Return True is list elements are monotonically increasing or decreasing.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""is list elements"": it is unclear whether this is a typo for ""if list elements"" (conditional check) or ""are list elements"" (statement of fact about the list's properties)."
+120,HumanEval/57,monotonic,"def monotonic(l: list):
+    """"""Return True is list elements exhibit a pattern of increase or decrease.
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Explanation:
+The ambiguous phrase is ""exhibit a pattern of increase or decrease"". This phrase is unclear as it doesn't specify whether the pattern refers to a consistent increase/decrease or if it can include varied increments/decrements. It can be interpreted in different ways, leading to different implementations. For example, one could interpret it as simply having more increases than decreases (or vice versa), or needing a consistent increment/decrement throughout the list."
+121,HumanEval/64,vowels_count,"
+FIX = """"""
+Add more test cases.
+""""""
+
+def vowels_count(s):
+""""""Write a function vowels_count which takes a string representing
+    a word as input and returns the number of vowels in the string.
+    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a
+    vowel, but only when it is at the end of the given word.
+
+    Example:
+    """"""
+",clear,CLEAR,
+122,HumanEval/64,vowels_count,"FIX = """"""
+Add more test cases.
+""""""
+
+def vowels_count(s):
+""""""Write a function vowels_count which takes a string representing
+    a word as input and returns the number of vowels in the string.
+    Vowels depend on the case: 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a
+    vowel, but only when it is at the end of the given word.
+
+    Example:
+    """"""",lexical,AMBIGUOUS,"""depend on the case"": Could mean that the definition of vowels is strictly case-sensitive (only 'a', 'e', 'i', 'o', 'u' count, not 'A', 'E', 'I', 'O', 'U'). Ambiguous here, as it contradicts the example `vowels_count(""ACEDY"")` which implies case-insensitivity by counting 'A' and 'E'."
+123,HumanEval/64,vowels_count,"def vowels_count(s):
+    """"""Write a function vowels_count which takes a string representing
+    a word as input and returns the number of distinct vowels in the string.
+    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a
+    vowel, but only when it is at the end of the given word.
+    """"""",semantic,AMBIGUOUS,"The phrase ""number of distinct vowels"" is semantically ambiguous—it can mean (A) counting each different vowel only once per string (e.g., for ""abcde"", ['a', 'e'] are the distinct vowels, so the count is 2), or (B) counting each occurrence of vowels, including duplicates (e.g., for ""abcde"", 'a' and 'e' appear once, so the count is 2). Each interpretation leads to different code and results."
+124,HumanEval/64,vowels_count,"def vowels_count(s):
+    """"""Write a function vowels_count which takes a string representing
+    a word as input and returns the number of vowels in the string.
+    Vowels in this case are 'a', 'e', 'i', 'o', 'u' here, 'y' is also a
+    vowel, but only when it is at the end of the given word.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous comma placement in ""Vowels in this case are 'a', 'e', 'i', 'o', 'u' here, 'y' is also a vowel"": it is unclear whether the comma after ""'u'"" separates two independent clauses (implying 'y' is always a vowel) or if it incorrectly punctuates a single clause (where 'y' is only a vowel at word end)."
+125,HumanEval/64,vowels_count,"FIX = """"""
+Add more test cases.
+""""""
+
+def vowels_count(s):
+""""""Write a function vowels_count which takes a string representing
+    a word as input and returns the number of vowels in the string.
+    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. 'y' could also be
+    considered as a vowel.
+
+    Example:
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Phrase: ""'y' could also be considered as a vowel.""
+
+Possible Interpretations: 
+1. 'y' is always treated as a vowel regardless of its position in the word.
+2. 'y' is only treated as a vowel when it is at the end of the word.
+3. 'y' is treated as a vowel under certain unspecified circumstances. 
+
+
+The phrase ""'y' could also be considered as a vowel"" does not specify the conditions under which 'y' is considered a vowel. This could lead to different interpretations and implementations, where 'y' is sometimes treated as a vowel and other times not, depending on the developer's understanding."
+126,HumanEval/65,circular_shift,"
+def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    """"""
+",clear,CLEAR,
+127,HumanEval/65,circular_shift,"def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits over by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    """"""",lexical,AMBIGUOUS,"""over"": Could mean shift right, shift left, or simply move position without specifying direction. Ambiguous here, as it fails to specify the direction (left or right) of the circular shift, unlike the original description's ""right""."
+128,HumanEval/65,circular_shift,"def circular_shift(x, shift):
+    """"""Circular shift the digits in the integer x, shift the digits to the right by shift 
+    and return the outcome as a string.
+    If shift > number of digits, reverse the entire sequence of digits.
+    """"""",semantic,AMBIGUOUS,"The phrase ""reverse the entire sequence of digits"" is semantically ambiguous—it can mean (A) reversing the digits of the original integer x (e.g., for x = 123, the result is ""321""), or (B) reversing the digits of the result obtained after performing any shifts (e.g., for x = 123 and shift = 5, the result of the circular shift is ""312"" and reversing it gives ""213""), each interpretation leading to different code and results."
+129,HumanEval/65,circular_shift,"def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string if shift > number of digits, return digits reversed.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase structure: The phrase ""return the result as a string if shift > number of digits, return digits reversed"" is ambiguous in whether the condition ""if shift > number of digits"" applies to both return cases or only the first one. 
+
+Possible interpretations:
+1. The condition applies to both returns: return as string if shift > digits, otherwise return digits reversed
+2. The condition only applies to the first return: always return as string, but if shift > digits, also return digits reversed (which would be contradictory)"
+130,HumanEval/65,circular_shift,"def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits in a direction by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""shift the digits in a direction by shift"", which lacks a clear definition, leading different implementers to interpret the direction of the shift based on their own understanding.
+
+Ambiguous Explanation:
+The modified ""shift the digits in a direction by shift"" phrase obscures whether the direction of the shift is to the left or to the right, allowing developers to implement different behaviors based on their interpretation."
+131,HumanEval/68,pluck,"
+def pluck(arr):
+    """"""
+    ""Given an array representing a branch of a tree that has non-negative integer nodes
+    your task is to pluck one of the nodes and return it.
+    The plucked node should be the node with the smallest even value.
+    If multiple nodes with the same smallest even value are found return the node that has smallest index.
+
+    The plucked node should be returned in a list, [ smalest_value, its index ],
+    If there are no even values or the given array is empty, return [].
+    """"""
+",clear,CLEAR,
+132,HumanEval/68,pluck,"def pluck(arr):
+    """"""
+    ""Given an array representing a branch of a tree that has non-negative integer nodes
+    your task is to pluck one of the nodes and return it.
+    The plucked node should be the node with the smallest regular value.
+    If multiple nodes with the same smallest regular value are found return the node that has smallest index.
+
+    The plucked node should be returned in a list, [ smalest_value, its index ],
+    If there are no regular values or the given array is empty, return [].
+    """"""",lexical,AMBIGUOUS,"""regular"": Could mean standard/any integer, common/frequent, or conforming to an unspecified rule. Ambiguous here, as ""regular"" lacks a specific mathematical definition in this context (unlike ""even"" in the original), making it unclear whether the requirement is to find the absolute smallest value or the smallest value meeting some undefined ""regular"" criteria."
+133,HumanEval/68,pluck,"def pluck(arr):
+    """"""
+    Given an array representing a branch of a tree that has non-negative integer nodes
+    your task is to pluck a node and return it.
+    The plucked node should be the node with the smallest even value.
+    If multiple nodes with the same smallest even value are found return the node that has smallest index.
+
+    The plucked node should be returned in a list, [ smalest_value, its index ],
+    If there are no even values or the given array is empty, return [].
+    """"""",semantic,AMBIGUOUS,"The phrase ""pluck a node and return it"" is semantically ambiguous—it can mean (A) selecting a node based on the smallest even value criteria and returning only its value (e.g., just 2 for input [4, 2, 3]), or (B) returning both the value and its index as specified later in the description (e.g., [2, 1] for input [4, 2, 3]), each interpretation leading to different code and results."
+134,HumanEval/68,pluck,"def pluck(arr):
+    """"""
+    ""Given an array representing a branch of a tree that has non-negative integer nodes
+    your task is to pluck one of the nodes and return it.
+    The plucked node should be the node with the smallest even value.
+    If multiple nodes with the same smallest even value are found return the node that has smallest index.
+
+    The plucked node should be returned in a list, [ smalest_value, its index ],
+    If there are no even values or the given array is empty, return [].
+    """"""",syntactic,AMBIGUOUS,"Example3:
+Unclear scope of ""smallest index"": it is ambiguous whether ""smallest index"" refers to the index of the smallest even value found first in the array, or the smallest index among all nodes with the smallest even value after identifying all such nodes."
+135,HumanEval/68,pluck,"def pluck(arr):
+    """"""
+    ""Given an array representing a branch of a tree that has integer nodes
+    your task is to pluck one of the nodes and return it.
+    The plucked node should be the node with the smallest even value.
+    If multiple nodes with the same smallest even value are found return the node that has smallest index.
+
+    The plucked node should be returned in a list, [ smalest_value, its index ],
+    If there are no even values or the given array is empty, return [].
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""integer nodes,"" which in ambiguous description lacks clarity on the value of the nodes.
+
+Ambiguous Explanation:
+The modified ""integer nodes"" phrase obscures whether the nodes can have negative values or not, as it contradicts the constraint ""0 <= node.value"". This allows developers to implement different behaviors based on their interpretation."
+136,HumanEval/73,smallest_change,"
+def smallest_change(arr):
+    """"""
+    Given an array arr of integers, find the minimum number of elements that
+    need to be changed to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In one change, you can change one element to any other element.
+    """"""
+",clear,CLEAR,
+137,HumanEval/73,smallest_change,"def smallest_change(arr):
+    """"""
+    Given an array arr of integers, find the minimum number of elements that
+    need to be moved to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In one change, you can change one element to any other element.
+    """"""",lexical,AMBIGUOUS,"""moved"": Could mean changing the position of elements within the array or changing the value of elements. Ambiguous here, as it conflicts with the later definition of the operation (""change one element to any other element"") and the examples, which clearly demonstrate changing values, not positions."
+138,HumanEval/73,smallest_change,"def smallest_change(arr):
+    """"""
+    Given an array arr of integers, find the minimum number of changes needed to make the array palindromic. A palindromic array is an array that is read the same backwards and forwards. In one change, you can change one element to any other element.
+    """"""",semantic,AMBIGUOUS,"The phrase ""minimum number of changes needed to make the array palindromic"" is semantically ambiguous—it can mean (A) the smallest number of elements that need to be changed to achieve a palindromic array, which implies counting pairs of elements from the start and end towards the center and changing one element in each mismatched pair, or (B) the fewest operations where one operation can change multiple elements at once, potentially leading to different interpretations of what constitutes a ""change"" and resulting in different code and outcomes."
+139,HumanEval/73,smallest_change,"def smallest_change(arr):
+    """"""
+    Given an array arr of integers find the minimum number of elements that
+    need to be changed to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In one change, you can change one element to any other element.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase: ""find the minimum number of elements that need to be changed to make the array palindromic"": it is ambiguous whether ""to make the array palindromic"" modifies ""need to be changed"" (the changes required for palindromicity) or ""find the minimum number"" (the purpose of finding the minimum number)."
+140,HumanEval/73,smallest_change,"def smallest_change(arr):
+    """"""
+    Given an array arr of integers, find the number of elements that
+    need to be changed to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In one change, you can change one element to any other element.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the absence of the word ""minimum"" in the phrase ""find the number of elements that need to be changed to make the array palindromic"". This could lead to different interpretations about how many elements need to be changed.
+
+Ambiguous Explanation:
+In the ambiguous description, the modified phrase ""find the number of elements that need to be changed"" does not specify that it needs to be the minimum number of elements. This could lead developers to calculate and return any number of changes that could make the array palindromic, not necessarily the smallest number of changes."
+141,HumanEval/76,is_simple_power,"
+def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x is a simple
+    power of n and false in other cases.
+    x is a simple power of n if n**int=x
+    """"""
+",clear,CLEAR,
+142,HumanEval/76,is_simple_power,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x is a natural
+    power of n and false in other cases.
+    x is a natural power of n if n**int=x
+    """"""",lexical,AMBIGUOUS,"""natural"": Could refer to powers where the exponent is a natural number (typically starting from 1) or a non-negative integer (starting from 0). Ambiguous here because the mathematical definition of natural numbers varies (sometimes excluding 0), potentially conflicting with the example `is_simple_power(1, 4)` which requires an exponent of 0 (`4**0=1`)."
+143,HumanEval/76,is_simple_power,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x can be expressed
+    as a simple power of n and false in other cases.
+    x is a simple power of n if n**int=x
+    """"""",semantic,AMBIGUOUS,"The phrase ""a simple power of n"" is semantically ambiguous—it can mean (A) x is exactly n raised to some integer power (e.g., 2 is a simple power of 2 because 2**1 = 2), or (B) x is n raised to some non-negative integer power (e.g., 1 is considered a simple power of any n because n**0 = 1), each interpretation leading to different code and results."
+144,HumanEval/76,is_simple_power,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x is a simple
+    power of n and false in other cases.
+    x is a simple power of n if n**int=x for some integer
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""n**int=x"": it is ambiguous whether ""int"" refers to the integer exponent that satisfies the equation or if it is a type conversion/casting operation (like Python's `int()` function)."
+145,HumanEval/76,is_simple_power,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x false in other cases.
+    x is a simple power of n if n**int=x
+    """"""",vagueness,AMBIGUOUS,"The ambiguity lies in the incomplete and vague condition “returns true if a number x false...” and the unclear term “n**value = x,” which obscure the intended logic and definition of a simple power."
+146,HumanEval/84,solve,"
+def solve(N):
+    """"""Given a positive integer N, return the total sum of its digits in binary.
+    """"""
+",clear,CLEAR,
+147,HumanEval/84,solve,"def solve(N):
+    """"""Given a positive integer N, return the base sum of its digits in binary.
+    """"""",lexical,AMBIGUOUS,"""base"": Could refer to the number system base (like base-10 for the input N or base-2 for the output), or it could be a vague modifier for ""sum"" (like fundamental or primary). Ambiguous here, as it obscures whether it refers to the base of the input number N's digits (decimal), the base of the resulting sum before conversion, or the base of the final output string (binary), confusing the calculation process compared to the clearer ""total sum""."
+148,HumanEval/84,solve,"def solve(N):
+    """"""Given a positive integer N, return the sum of its digits represented in binary.
+    """"""",semantic,AMBIGUOUS,"The phrase ""sum of its digits represented in binary"" is semantically ambiguous—it can mean (A) converting each digit of the number to binary and then summing these binary values, or (B) calculating the sum of the digits in their decimal form and then converting this total sum to a binary string, each interpretation leading to different processes and results."
+149,HumanEval/84,solve,"def solve(N):
+    """"""Given a positive integer N return the total sum of its digits in binary.
+    """"""",syntactic,AMBIGUOUS,"Example3:
+Unclear grouping of ""sum of its digits in binary"": it is ambiguous whether ""in binary"" modifies only ""sum"" (the sum is calculated in binary) or the entire phrase ""digits"" (the digits in binary)."
+150,HumanEval/84,solve,"def solve(N):
+    """"""Given a number N, return the total sum of its digits in binary.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the term ""number N,"" which lacks a clear definition, leading to different interpretations whether it refers to an integer, a floating-point number, or even a negative number.
+
+Ambiguous Explanation:
+The modified ""number N"" phrase obscures whether the function should be limited to positive integers only, or should also accept and process other types of numbers such as negative integers or floating-point numbers. This allows developers to implement different behaviors based on their interpretation."
+151,HumanEval/85,add,"
+def add(lst):
+    """"""Given a non-empty list of integers lst. add the even elements that are at odd indices..
+    """"""
+",clear,CLEAR,
+152,HumanEval/85,add,"def add(lst):
+    """"""Given a non-empty list of integers lst. aggregate the even elements that are at odd indices..
+    """"""",lexical,AMBIGUOUS,"""aggregate"": Could mean summing the elements, counting them, finding their average, or simply collecting them into a new list. Ambiguous here, as it obscures the specific mathematical operation required (summation, as implied by the original ""add"" and the example)."
+153,HumanEval/85,add,"def add(lst):
+    """"""Given a non-empty list of integers lst. Add even elements from odd positions.
+    """"""",semantic,AMBIGUOUS,"The phrase ""Add even elements from odd positions"" is ambiguous—it can mean (A) sum up the elements that are both even numbers AND located at odd indices (e.g., in [4, 2, 6, 7], only 2 at index 1 qualifies, result is 2), or (B) take all elements from odd positions, then add only the even ones among them (same result in this case but different logic), or (C) add (insert) even numbers into the odd positions of the list (a modification operation rather than summation), or (D) add the count of even elements found at odd positions (e.g., return 1 since there's one even element at an odd position). The verb ""add"" without context (sum vs. insert) and ""from"" (source vs. filter) create multiple valid interpretations."
+154,HumanEval/85,add,"def add(lst):
+    """"""Given a non-empty list of integers lst add the even elements that are at odd indices.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase placement: The missing period after ""lst"" makes it unclear whether ""add the even elements"" is part of the initial condition (""Given...lst"") or a separate instruction."
+155,HumanEval/85,add,"def add(lst):
+    """"""Given a list of integers lst. Add the even elements that might be at odd indices.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""even elements that might be at odd indices,"" which lacks a clear condition, leading different implementers to interpret which elements to add based on their own understanding.
+
+Ambiguous Explanation:
+The phrase ""might be at odd indices"" is unclear whether to include all even elements in the list or only those at odd indices, allowing developers to implement different behaviors based on their interpretation."
+156,HumanEval/87,get_row,"
+def get_row(lst, x):
+    """"""
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    """"""
+",clear,CLEAR,
+157,HumanEval/87,get_row,"def get_row(lst, x):
+    """"""
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    """"""",lexical,AMBIGUOUS,"""row"": Could mean a single horizontal line in the nested list or the entire nested list structure. Ambiguous here, as it may suggest searching only within a specific row instead of the entire 2D data structure."
+158,HumanEval/87,get_row,"def get_row(lst, x):
+    """"""
+    You are given a 2 dimensional data, as a nested lists.
+    Given lst and integer x, find all x in the list,
+    and return list of tuples [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, column).
+    Sort coordinates by rows, then by columns within each row in reverse.
+    """"""",semantic,AMBIGUOUS,"The phrase ""sort coordinates by rows, then by columns within each row in reverse"" is ambiguous—it can mean (A) first sort all coordinates by row index ascending, then within each row sort by column index descending (e.g., [(0,0), (1,4), (1,0), (2,5), (2,0)]), or (B) sort by row index, then reverse the order of all coordinates that belong to the same row (e.g., if row 1 has coordinates at columns 0 and 4, they appear as [(1,0), (1,4)] before reversal, becoming [(1,4), (1,0)] after), or (C) sort coordinates by row in ascending order, but traverse columns in reverse order when collecting coordinates (right to left scan). The phrase ""within each row in reverse"" doesn't clearly specify whether it refers to the sorting order or the processing order."
+159,HumanEval/87,get_row,"def get_row(lst, x):
+    """"""
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order and
+    sort coordinates of the row by columns in descending order.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""sort coordinates initially by rows in ascending order and sort coordinates of the row by columns in descending order"": it is unclear whether the second ""sort"" applies to the same initial list (overwriting the first sort) or if it's a secondary sorting operation that maintains the first sort's order for equal values (stable sort)."
+160,HumanEval/87,get_row,"def get_row(lst, x):
+    """"""
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates in descending order.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""Also, sort coordinates in descending order"". This phrase is unclear as it does not specify what aspect of the coordinates (the rows or the columns) should be sorted in descending order.
+
+Ambiguous Explanation:
+The phrase ""Also, sort coordinates in descending order."" can lead to different interpretations. One could understand it as sorting the entire coordinate tuples in descending order, or sorting the rows or columns within each coordinate in descending order. This could result in different implementations based on the developer's interpretation."
+161,HumanEval/92,any_int,"
+def any_int(x, y, z):
+    '''
+    Create a function that takes 3 numbers.
+    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are integers.
+    Returns false in any other cases.
+    '''
+",clear,CLEAR,
+162,HumanEval/92,any_int,"def any_int(x, y, z):
+    '''
+    Create a function that takes 3 numbers.
+    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are whole.
+    Returns false in any other cases.
+    '''",lexical,AMBIGUOUS,"""whole"": Could mean all integers (..., -1, 0, 1, ...) or only non-negative integers (0, 1, 2, ...). Ambiguous here, as the original description specified ""integers"" (clearly including negatives), while ""whole numbers"" often implies non-negativity, conflicting with the example `any_int(3, -2, 1) ➞ True`."
+163,HumanEval/92,any_int,"def any_int(x, y, z):
+    '''
+    Create a function that takes 3 numbers.
+    Returns true if one of the numbers equals the sum of the other two, ensuring all numbers are integers.
+    Returns false in any other cases.
+    '''",semantic,AMBIGUOUS,"The phrase ""ensuring all numbers are integers"" is semantically ambiguous—it can mean (A) a precondition that the function only needs to check if the input numbers are integers before performing any operations, or (B) a condition that the function should verify after calculating the sum to ensure the result and inputs are integers, each interpretation leading to different code and results."
+164,HumanEval/92,any_int,"def any_int(x, y, z):
+    '''
+    Create a function that takes 3 numbers.
+    Returns true if one of the numbers is equal to the sum of the other two and all numbers are integers.
+    Returns false in any other cases.
+    '''",syntactic,AMBIGUOUS,"Ambiguous grouping of conditions: it is ambiguous whether ""all numbers are integers"" is a separate requirement from ""one of the numbers is equal to the sum of the other two"" or if it modifies only the sum condition."
+165,HumanEval/92,any_int,"def any_int(x, y, z):
+    '''
+    Create a function that takes 3 numbers.
+    Returns true if one of the numbers is at least close to the sum of the other two, and all numbers are integers.
+    Returns false in any other cases.
+    '''",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""at least close to the sum of the other two"", which lacks a clear definition, leading different implementers to interpret how close the sum should be to constitute a return of True.
+
+Ambiguous Explanation:
+The phrase ""at least close to the sum"" is ambiguous because it does not specify what degree of closeness or margin of error is acceptable or required. This can lead to different understandings and implementations, such as whether a difference of 1, 0.1, or 0.001 between the sum and the number is acceptable."
+166,HumanEval/95,check_dict_case,"
+def check_dict_case(dict):
+    """"""
+    Given a dictionary, return True if all keys are strings in lower 
+    case or all keys are strings in upper case, else return False.
+    The function should return False is the given dictionary is empty.
+    """"""
+",clear,CLEAR,
+167,HumanEval/95,check_dict_case,"def check_dict_case(dict):
+    """"""
+    Given a dictionary, return True if all keys are strings of the same case, else return False.
+    The function should return False is the given dictionary is empty.
+    """"""",lexical,AMBIGUOUS,"""same case"": Could mean strictly all lowercase or all uppercase (as intended by the original description and examples), or it could potentially be interpreted more broadly to include any single consistent casing style applied to all string keys (e.g., all title case, all camelCase). Ambiguous here, as it replaces the explicit ""all lower or all upper"" condition with a phrase that might encompass other uniform casing styles not intended by the examples."
+168,HumanEval/95,check_dict_case,"def check_dict_case(dict):
+    """"""
+    Given a dictionary, return True if all keys are consistent in lower 
+    case or all keys are consistent in upper case, else return False.
+    The function should return False is the given dictionary is empty.
+    """"""",semantic,AMBIGUOUS,"The phrase ""keys are consistent in lower case or all keys are consistent in upper case"" is semantically ambiguous—it can mean (A) all keys are either entirely in lower case or entirely in upper case, without any non-string keys (e.g., {""a"": ""apple"", ""b"": ""banana""} or {""A"": ""apple"", ""B"": ""banana""}), or (B) all string keys are either in lower case or upper case, but non-string keys do not affect consistency (e.g., {""a"": ""apple"", 8: ""banana""} would be considered consistent if focusing only on string keys). Each interpretation affects which dictionaries are considered to meet the criteria of the function."
+169,HumanEval/95,check_dict_case,"def check_dict_case(dict):
+    """"""
+    Given a dictionary, return True if all keys are strings in lower 
+    case or in upper case else return False.
+    The function should return False is the given dictionary is empty.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous conjunction ""or"": it is unclear whether ""or"" applies to the entire condition (""all keys are strings in lower case or all keys are strings in upper case"") or if it allows for a mix of lower and upper case keys within the same dictionary."
+170,HumanEval/95,check_dict_case,"def check_dict_case(dict):
+    """"""
+    Given a dictionary, return True if all keys are strings in lower 
+    case or all keys are strings in some case, else return False.
+    The function should return False is the given dictionary is empty.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""strings in some case,"" which lacks a clear definition, leading different implementers to interpret what ""some case"" refers to.
+
+Ambiguous Explanation:
+The phrase ""strings in some case"" is vague because it could be interpreted in several ways. It could mean that all keys should be in only one form of case (either all upper case or all lower case) or it could mean that the keys can be a mix of upper and lower case. This ambiguity can lead to different implementations based on the developer's interpretation."
+171,HumanEval/102,choose_num,"
+def choose_num(x, y):
+    """"""This function takes two positive numbers x and y and returns the
+    biggest even integer number that is in the range [x, y] inclusive. If 
+    there's no such number, then the function should return -1.
+    """"""
+",clear,CLEAR,
+172,HumanEval/102,choose_num,"def choose_num(x, y):
+    """"""This function takes two positive numbers x and y and returns the
+    biggest round integer number that is in the range [x, y] inclusive. If
+    there's no such number, then the function should return -1.
+    """"""",lexical,AMBIGUOUS,"""round"": Could mean an integer ending in 0 (e.g., 10, 20, 100) or potentially serve as an imprecise substitute for ""even"". Ambiguous here, as it replaces the clear mathematical criterion ""even"" with a term that has multiple colloquial meanings, obscuring the intended selection logic."
+173,HumanEval/102,choose_num,"def choose_num(x, y):
+    """"""This function takes two numbers x and y and returns the
+    biggest even integer number that is in the range [x, y] inclusive. If 
+    there's no such number, then the function should return -1.
+    """"""",semantic,AMBIGUOUS,"The phrase ""two numbers x and y"" is semantically ambiguous—it can mean (A) two positive numbers, as explicitly stated in the original description, implying the function is designed to handle only positive inputs, or (B) any two numbers, including negative numbers or zero, which would potentially alter the behavior and expected outcome of the function when the range [x, y] includes non-positive numbers."
+174,HumanEval/102,choose_num,"def choose_num(x, y):
+    """"""This function takes two positive numbers x and y and returns the
+    biggest even integer number in the range [x, y] inclusive that is or 
+    there's no such number, then the function should return -1.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""that is or"": it is unclear whether ""that is"" is intended to complete the description of the number (""biggest even integer number that is in the range"") or if ""or"" introduces an alternative condition (""that is [some condition] or there's no such number"")."
+175,HumanEval/102,choose_num,"def choose_num(x, y):
+    """"""This function takes two numbers x and y and returns the
+    biggest even integer number that is in the range [x, y] inclusive. If 
+    there's no such number, then the function should return -1.
+    The description does not otherwise specify which interpretation should be used.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""two numbers x and y,"" which lacks a clear definition, leading different implementers to interpret whether x and y could be negative or floating-point numbers based on their understanding.
+
+Ambiguous Explanation:
+The modified ""two numbers x and y"" phrase obscures whether x and y are limited to positive integers, allowing developers to implement different behaviors based on their interpretation."
+176,HumanEval/108,count_nums,"
+def count_nums(arr):
+    """"""
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    """"""
+",clear,CLEAR,
+177,HumanEval/108,count_nums,"def count_nums(arr):
+    """"""
+    Write a function count_nums which takes an array of integers and returns
+    the number of values which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    """"""",lexical,AMBIGUOUS,"""values"": Could mean the individual items/numbers present in the input array (synonymous with ""elements"" in the original) or the distinct numerical quantities represented. Ambiguous here, as it might incorrectly suggest counting only the unique numbers satisfying the condition (e.g., counting 1 only once in `[1, 1, 2]`), rather than counting every occurrence of a number that meets the criteria."
+178,HumanEval/108,count_nums,"def count_nums(arr):
+    """"""
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which have a total sum of digits greater than 0.
+    e.g. -123 has signed digits -1, 2, and 3.
+    """"""",semantic,AMBIGUOUS,"The phrase ""total sum of digits greater than 0"" is semantically ambiguous—it can mean (A) the sum of the absolute values of all digits in the number is greater than 0 (e.g., -11 has digits -1 and 1, and the sum of absolute values is 1 + 1 = 2, which is greater than 0), or (B) the net sum of the signed digits, considering the sign of each digit, is greater than 0 (e.g., -11 has signed digits -1 and 1, and the net sum is -1 + 1 = 0, which is not greater than 0), each interpretation leading to different counts of numbers in the array."
+179,HumanEval/108,count_nums,"def count_nums(arr):
+    """"""
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0 if a number is negative,
+    then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous clause structure: it is unclear whether ""if a number is negative"" applies to the entire preceding clause (""the number of elements which has a sum of digits > 0"") or only to the subsequent explanation about signed digits."
+180,HumanEval/108,count_nums,"def count_nums(arr):
+    """"""
+    Write a function count_nums which takes an array of integers and returns
+    the quantity of elements which have a sum of digits > 0.
+       e.g. -123 has signed digits -1, 2, and 3.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from omitting the rule about signed digits in negative numbers, making it unclear how to compute the digit sum for such cases."
+181,HumanEval/110,exchange,"
+def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""
+",clear,CLEAR,
+182,HumanEval/110,exchange,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an adjustment of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of adjusted elements between lst1 and lst2.
+    If it is possible to adjust elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""",lexical,AMBIGUOUS,"""adjustment"": Could mean swapping elements (like the original ""exchange""), moving elements one-way, modifying elements in place, or other unspecified operations. Ambiguous here, as it obscures the specific mechanism (swapping) intended for manipulating elements between the two lists to achieve the desired state for `lst1`."
+183,HumanEval/110,exchange,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of numbers that are even.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""",semantic,AMBIGUOUS,"The phrase ""a list of numbers that are even"" is semantically ambiguous—it can mean (A) a list composed entirely of even numbers (e.g., all elements in the list are even numbers), or (B) a list where at least one element is even (e.g., the list contains some even numbers but not necessarily all elements are even), each interpretation leading to different code and results."
+184,HumanEval/110,exchange,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers or not.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""or not"": it is ambiguous whether ""or not"" applies to the entire condition (""make lst1 a list of only even numbers or not"") or only to the possibility of performing the exchange (""determines whether it is possible... or not"")."
+185,HumanEval/110,exchange,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform exchanges to make lst1 
+    a list of only even numbers.
+    Elements can be exchanged between lst1 and lst2 to achieve this goal.
+    If it is possible to make all the elements of lst1 even through exchanges, 
+    return ""YES"". Otherwise, return ""NO"".
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Phrase: ""Elements can be exchanged between lst1 and lst2""
+
+Possible Interpretations: 
+1. **One-to-one exchange**: Each element from lst1 must be swapped with exactly one element from lst2 (maintaining both lists' sizes).
+2. **Unrestricted replacement**: Any odd elements in lst1 can be replaced with even elements from lst2 without requiring a reciprocal exchange.
+3. **Subset exchange**: Only certain pairs of elements can be exchanged based on their positions or values.
+
+The ambiguity is enhanced by removing the explicit statement about ""no limit on the number of exchanged elements"" and using the vague phrase ""exchanges"" without specifying whether they must be bidirectional swaps or can be unidirectional replacements. The word ""between"" suggests bidirectional exchange, but ""to achieve this goal"" implies any method is acceptable."
+186,HumanEval/116,sort_array,"
+def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    """"""
+",clear,CLEAR,
+187,HumanEval/116,sort_array,"def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of bits in their binary representation in ascending order.
+    For similar number of bits, sort based on decimal value.
+
+    It must be implemented like this:
+    """"""",lexical,AMBIGUOUS,"""bits"": Could mean the total number of digits in the binary representation (length) or the number of set bits (1s). Ambiguous here, as it's unclear whether to sort by the total length of the binary string or by the count of '1's within it, unlike the original description which clearly specified ""number of ones""."
+188,HumanEval/116,sort_array,"def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array according to the
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    """"""",semantic,AMBIGUOUS,"The phrase ""sort an array according to the number of ones in their binary representation"" is semantically ambiguous—it can mean (A) sorting the entire array based on the count of '1's in the binary representation of each integer, which follows by sorting those with the same count of '1's by their decimal value, or (B) sorting only the positive integers this way while negative integers are sorted based on their decimal value, each interpretation leading to different sorting behavior."
+189,HumanEval/116,sort_array,"def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order for similar
+    number of ones sort based on decimal value.
+
+    It must be implemented like this:
+    """"""",syntactic,AMBIGUOUS,"Unclear scope of ""for similar number of ones"": it is ambiguous whether this phrase modifies only the immediately preceding ""ascending order"" or applies to the entire sorting criteria including the decimal value comparison."
+190,HumanEval/116,sort_array,"def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array of integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Phrase: ""sort an array of integers""
+
+Possible Interpretations: 
+
+1. The function could be interpreted as sorting an array of both positive and negative integers.
+2. The function could also be interpreted as sorting only non-negative integers, as in the original description, because the term ""integer"" can include both positive and negative numbers, as well as zero. 
+
+The ambiguous phrase ""sort an array of integers"" does not specify whether the integers to be sorted should be non-negative, as in the original description, or if negative integers are also to be included. This could lead to different implementations based on the developer's interpretation."
+191,HumanEval/124,valid_date,"
+def valid_date(date):
+    """"""You have to write a function which validates a given date string and
+    returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the format: mm-dd-yyyy
+    """"""
+",clear,CLEAR,
+192,HumanEval/124,valid_date,"def valid_date(date):
+    """"""You have to write a function which validates a given date string and
+    returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the standard: mm-dd-yyyy
+    """"""",lexical,AMBIGUOUS,"""standard"": Could mean the exact specified format `mm-dd-yyyy`, or it could refer to a generally accepted convention for writing dates, which might include other formats (e.g., `yyyy-mm-dd`, `dd-mm-yyyy`) not intended by the original description."
+193,HumanEval/124,valid_date,"def valid_date(date):
+    """"""You have to write a function which confirms a given date string as valid
+    or invalid and returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be formatted as: mm-dd-yyyy
+    """"""",semantic,AMBIGUOUS,"The phrase ""formatted as: mm-dd-yyyy"" is semantically ambiguous—it can mean (A) the date string must strictly adhere to the ""mm-dd-yyyy"" format with exactly two digits for the month and day and four digits for the year (e.g., '03-11-2000'), or (B) the date string can be in a flexible interpretation where single-digit months and days are allowed, as long as they are separated by dashes (e.g., '3-11-2000'), each interpretation potentially leading to different validation logic."
+194,HumanEval/124,valid_date,"def valid_date(date):
+    """"""You have to write a function which validates a given date string and
+    returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the format: mm-dd-yyyy
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""or not"": it is unclear whether ""or not"" applies to the entire preceding condition (""The date is valid if all of the following rules are satisfied"") or only to the last rule in the list, creating confusion about whether the date is valid when the rules are not satisfied."
+195,HumanEval/124,valid_date,"def valid_date(date):
+    """"""You have to write a function which validates a given date string and
+    returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is within an appropriate range for the corresponding month.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the format: mm-dd-yyyy
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""The number of days is within an appropriate range for the corresponding month."" in the second rule, which lacks a clear definition of what the 'appropriate range' for each month is, hence leading to different interpretations by implementers.
+
+Ambiguous Explanation:
+The phrase ""appropriate range"" obscures the specific day limits for each month, allowing developers to make assumptions about the number of days in each month. This could lead to incorrect implementations, such as considering February to have 30 days or April to have 31 days. Without the explicit day limits for each month, the validation can vary significantly based on the developer's interpretation."
+196,HumanEval/128,prod_signs,"
+def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by product of all signs
+    of each number in the array, represented by 1, -1 or 0.
+    """"""
+",clear,CLEAR,
+197,HumanEval/128,prod_signs,"def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by aggregate of all signs
+    of each number in the array, represented by 1, -1 or 0.
+    """"""",lexical,AMBIGUOUS,"""aggregate"": Could mean sum, product, average, count, or another combined value. Ambiguous here, as it obscures the specific mathematical operation (product) intended for combining the signs of the numbers in the array."
+198,HumanEval/128,prod_signs,"def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by product of all signs
+    of numbers in the array, interpreted as 1, -1 or 0.
+    """"""",semantic,AMBIGUOUS,"The phrase ""sum of magnitudes of integers multiplied by product of all signs"" is semantically ambiguous—it can mean (A) calculating the sum of absolute values of the integers and then multiplying that sum by the product of the signs of each individual integer in the array, or (B) calculating the product of signs first and then applying it to each integer before summing those modified values, each interpretation leading to different code and results."
+199,HumanEval/128,prod_signs,"def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by product of all signs
+    of each number in the array represented by 1, -1 or 0.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase placement: it is ambiguous whether ""represented by 1, -1 or 0"" modifies ""product of all signs"" or ""each number in the array""."
+200,HumanEval/128,prod_signs,"def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by some product of signs
+    of each number in the array, represented by 1, -1 or 0.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""some product of signs,"" which is not clearly defined, leading to different interpretations on how to calculate the product of signs.
+
+Ambiguous Explanation:
+The modified ""some product of signs"" phrase obscures whether the product of signs should be calculated for all elements in the array, only for a subset of elements, or in some other specific pattern. This allows developers to implement different behaviors based on their interpretation."
+201,HumanEval/129,minPath,"
+def minPath(grid, k):
+    """"""
+    Given a grid with N rows and N columns (N >= 2) and a positive integer k, 
+    each cell of the grid contains a value. Every integer in the range [1, N * N]
+    inclusive appears exactly once on the cells of the grid.
+
+    You have to find the minimum path of length k in the grid. You can start
+    from any cell, and in each step you can move to any of the neighbor cells,
+    in other words, you can go to cells which share an edge with you current
+    cell.
+    """"""
+",clear,CLEAR,
+202,HumanEval/129,minPath,"def minPath(grid, k):
+    """"""
+    Given a grid with N rows and N columns (N >= 2) and a positive integer k, 
+    each cell of the grid contains a value. Every integer in the range [1, N * N]
+    inclusive appears exactly once on the cells of the grid.
+
+    You have to find the minimum path of length k in the grid. You can start
+    from any cell, and in each step you can move to any of the neighbor cells,
+    in other words, you can go to cells which touch you current cell.
+    """"""",lexical,AMBIGUOUS,"""touch"": Could mean sharing an edge (adjacent horizontally or vertically) or sharing an edge or a corner (including diagonal cells). Ambiguous here, as it obscures whether diagonal movement is permitted, unlike the original description's explicit ""share an edge""."
+203,HumanEval/129,minPath,"def minPath(grid, k):
+    """"""
+    Given a grid with N rows and N columns (N >= 2) and a positive integer k, 
+    each cell of the grid contains a value. Every integer in the range [1, N * N]
+    inclusive appears exactly once on the cells of the grid.
+
+    You have to find the minimum path of length k in the grid. You can start
+    from any cell, and in each step you can move to any of the neighbor cells,
+    in other words, you can go to cells which share an edge with your current
+    cell.
+    """"""",semantic,AMBIGUOUS,"The phrase ""cells which share an edge"" is ambiguous about what constitutes a valid neighbor:
+(A) Only cells that share a full edge are neighbors (4-directional movement: up, down, left, right), which is the standard interpretation and what the examples suggest, or
+(B) Cells that share any boundary point are neighbors, including diagonal cells that share only a corner (8-directional movement: up, down, left, right, and all four diagonals).
+
+The first example showing movement from 1→2→1 suggests only horizontal/vertical movement is allowed (interpretation A), as diagonal movement would provide different optimal paths."
+204,HumanEval/129,minPath,"def minPath(grid, k):
+    """"""
+    Given a grid with N rows and N columns (N >= 2) and a positive integer k, 
+    each cell of the grid contains a value. Every integer in the range [1, N * N]
+    inclusive appears exactly once on the cells of the grid.
+
+    You have to find the minimum path of length k in the grid. You can start
+    from any cell, and in each step you can move to any of the neighbor cells,
+    in other words, you can go to cells which share an edge with you current
+    cell.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase: ""visiting exactly k cells not necessarily distinct""
+
+Possible interpretations:
+1. The phrase could mean visiting exactly k cells (with no restriction on distinctness), where the ""not necessarily distinct"" is a separate clause modifying the entire statement about visiting cells.
+2. The phrase could mean visiting exactly k cells that are not necessarily distinct, where ""not necessarily distinct"" directly modifies ""cells"", implying the cells themselves may be non-distinct (i.e., revisiting is allowed)."
+205,HumanEval/129,minPath,"def minPath(grid, k):
+    """"""
+    Given a grid with N rows and N columns (N >= 2) and a positive integer k, 
+    each cell of the grid contains a value. Every integer in the range [1, N * N]
+    inclusive appears at least once on the cells of the grid.
+
+    You have to find the minimum path of length k in the grid. You can start
+    from any cell, and in each step you can move to any of the neighbor cells,
+    in other words, you can go to cells which share an edge with you current
+    cell.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""Every integer in the range [1, N * N] inclusive appears at least once on the cells of the grid"".
+
+Ambiguous Explanation:
+The phrase ""at least once"" introduces ambiguity in the representation of the grid. The original description states that each integer appears exactly once, but the ambiguous description allows for the possibility of integers repeating in the grid. This can lead to different interpretations and implementations of the ""minimum path"" solution, affecting the uniqueness of the answer."
+206,HumanEval/132,is_nested,"
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+",clear,CLEAR,
+207,HumanEval/132,is_nested,"def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a regular subsequence of brackets
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''",lexical,AMBIGUOUS,"""regular"": Could mean relating to regular expressions, occurring at uniform intervals, or simply standard/ordinary. Ambiguous here, as it replaces the precise term ""valid"" (meaning correctly matched and potentially nested pairs) with a vague term that doesn't clearly define the structural property required of the bracket subsequence."
+208,HumanEval/132,is_nested,"def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the entire sequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''",semantic,AMBIGUOUS,"The phrase ""valid subsequence of brackets where at least one bracket in the subsequence is nested"" is semantically ambiguous—it can mean (A) the subsequence must form a valid sequence of brackets by itself and contain at least one nested bracket (e.g., `[[]]` within the string), or (B) any subsequence of the string that is nested, regardless of its overall validity as a standalone sequence (e.g., `[[]` within `[[]][[`), each interpretation leading to different validation logic."
+209,HumanEval/132,is_nested,"def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket is nested in the subsequence.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''",syntactic,AMBIGUOUS,"Ambiguous phrase ""valid subsequence of brackets where at least one bracket is nested in the subsequence"": it is unclear whether ""nested"" applies to the position of the bracket within the subsequence (e.g., a bracket surrounded by others in the subsequence) or to the bracket's relationship to other brackets in the original string (e.g., a bracket that encloses another bracket in the original string)."
+210,HumanEval/132,is_nested,"def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""if there is a valid subsequence of brackets"", which lacks a clear definition, leading to different interpretations of what constitutes a valid subsequence of brackets.
+
+Ambiguous Explanation:
+The phrase ""if there is a valid subsequence of brackets"" can lead to uncertainty about what constitutes a valid subsequence, whether it should include all types of brackets or only a specific type, and whether the sequence should be contiguous or can be broken apart. This ambiguity would allow developers to implement different behaviors based on their interpretation."
+211,HumanEval/133,sum_squares,"
+
+def sum_squares(lst):
+    """"""You are given a list of numbers.
+    You need to return the sum of squared numbers in the given list,
+    round each element in the list to the upper int(Ceiling) first.
+    """"""
+",clear,CLEAR,
+212,HumanEval/133,sum_squares,"def sum_squares(lst):
+    """"""You are given a list of numbers.
+    You need to return the sum of square numbers in the given list,
+    round each element in the list to the upper int(Ceiling) first.
+    """"""",lexical,AMBIGUOUS,"""square numbers"": Could mean numbers that are perfect squares (e.g., 1, 4, 9) or the result of squaring each number. Ambiguous here, as the phrasing suggests filtering pre-existing square numbers rather than squaring all elements after rounding."
+213,HumanEval/133,sum_squares,"def sum_squares(lst):
+    """"""You are given a list of numbers.
+    You need to return the squared sum of numbers in the given list,
+    round each element in the list to the upper int(Ceiling) first.
+    """"""",semantic,AMBIGUOUS,"The phrase ""squared sum of numbers"" is semantically ambiguous—it can mean (A) the sum of the squares of each number in the list (e.g., sum([ceil(x)**2 for x in lst])), or (B) the square of the sum of all numbers in the list (e.g., (sum([ceil(x) for x in lst]))**2), each interpretation leading to different code and results."
+214,HumanEval/133,sum_squares,"def sum_squares(lst):
+    """"""You are given a list of numbers.
+    You need to return the sum of squared numbers in the given list,
+    round each element in the list to the upper int first (Ceiling).
+    """"""",syntactic,AMBIGUOUS,"Ambiguous placement of ""first (Ceiling)"": it is unclear whether ""first"" modifies the rounding operation (round to ceiling before squaring) or the order of operations (round to ceiling as the first step in a sequence of steps)."
+215,HumanEval/133,sum_squares,"def sum_squares(lst):
+    """"""You are given a list of numbers.
+    You need to return the sum of squared numbers in the given list,
+    round each element in the list first.
+    """"""",vagueness,AMBIGUOUS,"Ambiguous Phrase: ""round each element in the list first""
+
+The ambiguity arises from the phrase ""round each element in the list first,"" which does not specify how the rounding should be done. In the original description, it was clearly stated that the rounding should be done to the upper integer (Ceiling), but in the ambiguous description, it is not clear whether the rounding should be done to the nearest integer, the lower integer (Floor), or the upper integer (Ceiling). This can lead different implementers to produce different results based on their interpretation."
+216,HumanEval/140,fix_spaces,"
+def fix_spaces(text):
+    """"""
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, 
+    then replace all consecutive spaces with - 
+    """"""
+",clear,CLEAR,
+217,HumanEval/140,fix_spaces,"def fix_spaces(text):
+    """"""
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, 
+    then mark all consecutive spaces with - 
+    """"""",lexical,AMBIGUOUS,"""mark"": Could mean replace, indicate, or flag. Ambiguous here, as it obscures the intended action of replacing the consecutive spaces with a hyphen, potentially suggesting annotation or simple identification instead."
+218,HumanEval/140,fix_spaces,"def fix_spaces(text):
+    """"""
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, 
+    then replace all consecutive spaces with - 
+    """"""",semantic,AMBIGUOUS,"The phrase ""more than 2 consecutive spaces"" is ambiguous regarding the threshold for replacement:
+(A) Replace sequences of spaces only when there are strictly more than 2 spaces (i.e., 3 or more spaces), as suggested by the phrase ""more than 2"", or
+(B) Replace sequences of spaces when there are 2 or more spaces, which would include pairs of spaces as well, despite the phrase suggesting otherwise.
+
+The examples suggest interpretation (A), where only sequences of 3 or more spaces are replaced with a dash."
+219,HumanEval/140,fix_spaces,"def fix_spaces(text):
+    """"""
+    Given a string text replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces 
+    then replace all consecutive spaces with - 
+    """"""",syntactic,AMBIGUOUS,"Unclear scope of ""then"": it is ambiguous whether ""then"" applies to the entire preceding condition (""if a string has more than 2 consecutive spaces"") or only to the immediate preceding clause (""replace all spaces in it with underscores"")."
+220,HumanEval/140,fix_spaces,"def fix_spaces(text):
+    """"""
+    Given a string text, replace all spaces in it with underscores 
+    """"""",vagueness,AMBIGUOUS,"The ambiguity is that the second prompt omits the rule about replacing more than 2 consecutive spaces with ""-"", making the transformation logic unclear when continus spaces appear."
+221,HumanEval/147,get_max_triples,"
+def get_max_triples(n):
+    """"""
+    You are given a positive integer n. You have to create an integer array a of length n.
+        For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, 
+    and a[i] + a[j] + a[k] is a multiple of 3.
+    """"""
+",clear,CLEAR,
+222,HumanEval/147,get_max_triples,"def get_max_triples(n):
+    """"""
+    You are given a positive integer n. You have to create an integer array a of length n.
+        For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+        Return the number of key triples (a[i], a[j], a[k]) of a where i < j < k,
+    and a[i] + a[j] + a[k] is a multiple of 3.
+    """"""",lexical,AMBIGUOUS,"""key"": Could mean important/significant, or simply qualifying/valid. Ambiguous here, as it might imply counting only a specific subset of ""important"" triples rather than all triples meeting the mathematical condition."
+223,HumanEval/147,get_max_triples,"def get_max_triples(n):
+    """"""
+    You are given a positive integer n. You have to create an integer array a of length n.
+        For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, 
+    and a[i] + a[j] + a[k] is divisible by 3.
+    """"""",semantic,AMBIGUOUS,"The phrase ""a[i] + a[j] + a[k] is divisible by 3"" is semantically ambiguous—it can mean (A) the sum of the triple (a[i], a[j], a[k]) is divisible by 3, which is consistent with the original intent, or (B) each individual element a[i], a[j], and a[k] is divisible by 3, which would lead to a different interpretation and potentially different results."
+224,HumanEval/147,get_max_triples,"def get_max_triples(n):
+    """"""
+    You are given a positive integer n. You have to create an integer array a of length n.
+        For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k 
+    and a[i] + a[j] + a[k] is a multiple of 3.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase: ""where i < j < k and a[i] + a[j] + a[k] is a multiple of 3""
+
+Possible interpretations: 
+1. The condition applies to both the indices (i < j < k) and the sum (a[i] + a[j] + a[k] is a multiple of 3) as a single combined requirement.
+2. The condition could be misinterpreted as two separate requirements: (i < j < k) and independently (a[i] + a[j] + a[k] is a multiple of 3), potentially allowing non-sequential indices if read loosely."
+225,HumanEval/147,get_max_triples,"def get_max_triples(n):
+    """"""
+    You are given a positive integer n. You have to create an integer array a of length n.
+        For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity lies in omitting the key requirement to ""return the number of triples (a[i], a[j], a[k]) with i < j < k such that a[i] + a[j] + a[k] is divisible by 3,"" making the description incomplete and unclear about what exactly should be calculated."
+226,HumanEval/151,double_the_difference,"
+def double_the_difference(lst):
+    '''
+    Given a list of numbers, return the sum of squares of the numbers
+    in the list that are odd. Ignore numbers that are negative or not integers.
+    
+    double_the_difference([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10
+    double_the_difference([-1, -2, 0]) == 0
+    double_the_difference([9, -2]) == 81
+    double_the_difference([0]) == 0  
+   
+    If the input list is empty, return 0.
+    '''
+",clear,CLEAR,
+227,HumanEval/151,double_the_difference,"def double_the_difference(lst):
+    '''
+    Given a list of numbers, return the sum of squares of the numbers
+    in the list that are key. Ignore numbers that are negative or not integers.
+    
+    double_the_difference([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10
+    double_the_difference([-1, -2, 0]) == 0
+    double_the_difference([9, -2]) == 81
+    double_the_difference([0]) == 0  
+   
+    If the input list is empty, return 0.
+    '''",lexical,AMBIGUOUS,"""key"": Could mean important, a dictionary key, or relating to cryptography. Ambiguous here, as it replaces the specific mathematical condition ""odd"" with a vague term, making it unclear which numbers should be squared and summed."
+228,HumanEval/151,double_the_difference,"def double_the_difference(lst):
+    '''
+    Given a list of numbers, return the sum of squares of the numbers
+    in the list that are considered odd. Ignore numbers that are negative or not integers.
+    
+    double_the_difference([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10
+    double_the_difference([-1, -2, 0]) == 0
+    double_the_difference([9, -2]) == 81
+    double_the_difference([0]) == 0  
+   
+    If the input list is empty, return 0.
+    '''",semantic,AMBIGUOUS,"The phrase ""considered odd"" is semantically ambiguous—it can mean (A) numbers that are strictly odd integers (e.g., 1, 3, 9), or (B) numbers that are perceived or treated as odd according to a custom or non-standard definition, which might include numbers based on a different context or criteria, each interpretation leading to different code and results."
+229,HumanEval/151,double_the_difference,"def double_the_difference(lst):
+    '''
+    Given a list of numbers, return the sum of squares of the numbers
+    in the list that are odd ignore numbers that are negative or not integers.
+    
+    double_the_difference([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10
+    double_the_difference([-1, -2, 0]) == 0
+    double_the_difference([9, -2]) == 81
+    double_the_difference([0]) == 0  
+   
+    If the input list is empty, return 0.
+    '''",syntactic,AMBIGUOUS,"Ambiguous phrase placement of ""ignore numbers that are negative or not integers"": it is unclear whether this applies only to the odd numbers being considered (""return the sum of squares of the numbers in the list that are odd [and] ignore numbers that are negative or not integers"") or to all numbers in the list before checking for oddness (""ignore numbers that are negative or not integers [then] return the sum of squares of the numbers in the list that are odd"")."
+230,HumanEval/151,double_the_difference,"def double_the_difference(lst):
+    '''
+    Given a list of numbers, return the sum of squares of valid odd numbers
+    in the list.
+    
+    double_the_difference([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10
+    double_the_difference([-1, -2, 0]) == 0
+    double_the_difference([9, -2]) == 81
+    double_the_difference([0]) == 0  
+    
+    If the input list is empty, return 0.
+    '''",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""valid odd numbers"" which doesn't specify what makes an odd number ""valid"", leaving developers to infer the validation criteria from the examples.
+
+Ambiguous Explanation:
+The phrase ""valid odd numbers"" creates multiple possible interpretations:
+1. **Positive odd numbers only**: ""Valid"" could mean only positive odd numbers are considered
+2. **Integer odd numbers only**: ""Valid"" could mean only odd integers (excluding floats like 3.5)
+3. **Both conditions**: The correct interpretation - odd numbers that are both positive AND integers
+4. **Odd numbers within a range**: ""Valid"" could imply numbers within some acceptable range
+5. **Non-zero odd numbers**: ""Valid"" could mean excluding zero (though zero isn't odd anyway)
+
+The word ""valid"" sounds like it imposes important restrictions but doesn't clarify what those restrictions are. Developers must analyze the examples to deduce that negative numbers return 0 and that non-integers should be excluded. This vague qualifier creates genuine confusion about the filtering criteria while appearing to be a complete specification."
+231,HumanEval/155,even_odd_count,"
+def even_odd_count(num):
+    """"""Given an integer. return a tuple that has the number of even and odd digits respectively.
+    """"""
+",clear,CLEAR,
+232,HumanEval/155,even_odd_count,"def even_odd_count(num):
+    """"""Given a number. return a tuple that has the number of even and odd digits respectively.
+    """"""",lexical,AMBIGUOUS,"""number"": Could mean an integer or any numerical type including floats. Ambiguous here, as it's unclear if the function should handle non-integer inputs (e.g., 12.3) and how to count digits in such cases."
+233,HumanEval/155,even_odd_count,"def even_odd_count(num):
+    """"""Given an integer. return a tuple containing the count of even and odd digits, in that order.
+    """"""",semantic,AMBIGUOUS,"The phrase ""in that order"" is semantically ambiguous—it can mean (A) the order in which even and odd digits appear in the original number, or (B) the order specified explicitly in the description, meaning first the count of even digits and then the count of odd digits in the tuple, leading to different interpretations of the expected output structure."
+234,HumanEval/155,even_odd_count,"def even_odd_count(num):
+    """"""Given an integer return a tuple that has the number of even digits and odd respectively.
+    """"""",syntactic,AMBIGUOUS,"The syntactic ambiguity arises from the phrase ""number of even digits and odd respectively"", which makes it unclear whether ""respectively"" applies to both ""even digits"" and ""odd"" or only to ""odd""."
+235,HumanEval/155,even_odd_count,"def even_odd_count(num):
+    """"""Given a number. return a tuple that has the number of even and odd digits respectively.
+    The description does not otherwise specify which interpretation should be used.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the word ""number"" which replaces ""integer"" in the ambiguous description. This word is unclear as it could refer to integers, real numbers, complex numbers, etc., leading to different interpretations by the developers.
+
+Ambiguous Explanation:
+The modified ""Given a number"" phrase obscures the type of number the function should handle. This could lead developers to implement the function in ways that handle real numbers, complex numbers or other numerical types, instead of strictly integers."
+236,HumanEval/158,find_max,"
+def find_max(words):
+    """"""Write a function that accepts a list of strings.
+    The list contains different words. Return the word with maximum number
+    of unique characters. If multiple strings have maximum number of unique
+    characters, return the one which comes first in lexicographical order.
+
+    find_max([""name"", ""of"", ""string""]) == ""string""
+    find_max([""name"", ""enam"", ""game""]) == ""enam""
+    find_max([""aaaaaaa"", ""bb"" ,""cc""]) == """"aaaaaaa""
+    """"""
+",clear,CLEAR,
+237,HumanEval/158,find_max,"def find_max(words):
+    """"""Write a function that accepts a list of strings.
+    The list contains different words. Return the word with maximum number
+    of unique key characters. If multiple strings have maximum number of unique
+    key characters, return the one which comes first in lexicographical order.
+
+    find_max([""name"", ""of"", ""string""]) == ""string""
+    find_max([""name"", ""enam"", ""game""]) == ""enam""
+    find_max([""aaaaaaa"", ""bb"" ,""cc""]) == """"aaaaaaa""
+    """"""",lexical,AMBIGUOUS,"""key characters"": Could mean all unique characters (treating ""key"" as redundant emphasis) or a specific subset of characters deemed ""key"" or important (e.g., perhaps only alphabetic characters, or characters belonging to a predefined set). Ambiguous here, as it's unclear if ""key"" modifies the set of characters to consider for uniqueness counting."
+238,HumanEval/158,find_max,"def find_max(words):
+    """"""Write a function that accepts a list of strings.
+    The list contains different words. Return the word with the greatest number
+    of unique characters. If multiple strings have the maximum number of unique
+    characters, return the one which appears first in lexicographical order.
+
+    find_max([""name"", ""of"", ""string""]) == ""string""
+    find_max([""name"", ""enam"", ""game""]) == ""enam""
+    find_max([""aaaaaaa"", ""bb"" ,""cc""]) == ""aaaaaaa""
+    """"""",semantic,AMBIGUOUS,"The phrase ""comes first in lexicographical order"" is semantically ambiguous—it can mean (A) the word that appears earliest in the dictionary order, treating the words as they are, or (B) the word that appears earliest in the dictionary order, considering only the unique characters within each word, each interpretation leading to different code and results."
+239,HumanEval/158,find_max,"def find_max(words):
+    """"""Write a function that accepts a list of strings.
+    The list contains different words return the word with maximum number
+    of unique characters. If multiple strings have maximum number of unique
+    characters, return the one which comes first in lexicographical order.
+
+    find_max([""name"", ""of"", ""string""]) == ""string""
+    find_max([""name"", ""enam"", ""game""]) == ""enam""
+    find_max([""aaaaaaa"", ""bb"" ,""cc""]) == """"aaaaaaa""
+    """"""",syntactic,AMBIGUOUS,"Unclear punctuation in ""different words return"": the missing comma makes it ambiguous whether ""return"" is part of the description (""different words return the word..."") or the instruction to return a value (""different words, return the word..."")."
+240,HumanEval/158,find_max,"def find_max(words):
+    """"""Write a function that accepts a list of strings.
+    The list contains different words. Return the word with a large number
+    of unique characters. If multiple strings have the same number of unique
+    characters, return the one which comes first in lexicographical order.
+
+    find_max([""name"", ""of"", ""string""]) == ""string""
+    find_max([""name"", ""enam"", ""game""]) == ""enam""
+    find_max([""aaaaaaa"", ""bb"" ,""cc""]) == """"aaaaaaa""
+    """"""",vagueness,AMBIGUOUS,"The ambiguity arises from the phrase ""a large number of unique characters,"" which lacks a clear quantification, leading different implementers to interpret what counts as a ""large number"" based on their own understanding.
+
+Ambiguous Explanation:
+The modified ""a large number of unique characters"" phrase obscures the requirement of maximum uniqueness, allowing developers to implement different behaviors based on their interpretation of what constitutes a ""large number""."
+241,HumanEval/159,eat,"
+def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    """"""
+",clear,CLEAR,
+242,HumanEval/159,eat,"def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    """"""",lexical,AMBIGUOUS,"""set for this meal"": Could mean the target number of carrots the rabbit *needs* or *intends* to eat, or it could imply a specific quantity *allocated* or *made available* specifically for this meal, potentially distinct from the total `remaining` carrots. This obscures whether `need` represents a requirement/goal or a predefined portion for the current eating session."
+243,HumanEval/159,eat,"def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    The intended semantic scope of this requirement is not otherwise specified.
+    """"""",semantic,AMBIGUOUS,"The phrase ""remaining carrots that exist for consumption"" is semantically ambiguous—it can mean (A) the total number of carrots physically present and available for eating, or (B) the number of carrots specifically allocated or intended for the rabbit's consumption, possibly excluding any reserved or set aside for other purposes. Each interpretation could lead to different assumptions about the available stock of carrots."
+244,HumanEval/159,eat,"def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    The attachment of the ambiguous phrase in this requirement is not otherwise specified.
+    """"""",syntactic,AMBIGUOUS,"Ambiguous phrase ""the number of carrots that you have eaten"": it is unclear whether this refers to the total carrots eaten before the current meal (cumulative) or just the carrots eaten in the previous meal (non-cumulative)."
+245,HumanEval/159,eat,"def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    The description does not otherwise specify which interpretation should be used.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity here lies in whether ""need"" represents the exact number of carrots that must be eaten or just a minimum required amount, and also whether the returned ""total number of eaten carrots"" includes the carrots already eaten (the input number), since the description does not explicitly clarify this."
+246,HumanEval/163,generate_integers,"
+def generate_integers(a, b):
+    """"""
+    Given two positive integers a and b, return the even digits between a
+    and b, in ascending order.
+    """"""
+",clear,CLEAR,
+247,HumanEval/163,generate_integers,"def generate_integers(a, b):
+    """"""
+    Given two positive integers a and b, return the even elements between a
+    and b, in ascending order.
+    """"""",lexical,AMBIGUOUS,"""elements"": Could mean the integers themselves within the specified range or the individual digits comprising those integers. Ambiguous here, as it obscures whether the function should operate on the integers as whole numbers (like 2, 4, 6, 8) or their constituent digits."
+248,HumanEval/163,generate_integers,"def generate_integers(a, b):
+    """"""
+    Given two positive integers a and b, return the even integers between a
+    and b, in ascending order.
+    """"""",semantic,AMBIGUOUS,"The phrase ""even integers between a and b"" is semantically ambiguous—it can mean (A) even integers within the inclusive range from a to b (e.g., generate_integers(2, 8) → [2, 4, 6, 8]), or (B) even integers that fall strictly between a and b, excluding a and b themselves (e.g., generate_integers(2, 8) → [4, 6]), each interpretation leading to different code and results."
+249,HumanEval/163,generate_integers,"def generate_integers(a, b):
+    """"""
+    Given two positive integers a and b return the even digits between a
+    and b in ascending order.
+    """"""",syntactic,AMBIGUOUS,"The syntactic ambiguity arises from the missing comma after ""b"", which makes ""between a and b"" potentially read as modifying ""digits"" (even digits that happen to be between a and b) rather than specifying the range to search for even numbers."
+250,HumanEval/163,generate_integers,"def generate_integers(a, b):
+    """"""
+    Given two positive integers a and b, return the even digits between a
+    and b.
+    """"""",vagueness,AMBIGUOUS,"The ambiguity here is whether ""even digits"" means the individual digits 0, 2, 4, 6, 8 appearing within numbers between a and b, or if it means the even numbers themselves between a and b. Additionally, it's unclear if the range is inclusive and whether the order should always be ascending regardless of the input order."

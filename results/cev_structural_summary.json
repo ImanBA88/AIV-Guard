@@ -1,0 +1,12 @@
+{
+  "phase": "Post-hoc exploratory CEV sample; no independent semantic validity certification",
+  "n": 30,
+  "structural_pass": 27,
+  "structural_fail": 3,
+  "structural_pass_rate": 0.9,
+  "human_semantic_status": {
+    "PENDING": 30
+  },
+  "dataset_used_for_sampling": "Test250 previous outputs, 6 cases per source gold class; sampled after classification evaluation",
+  "note": "Formal semantic validity and behavioral difference not established by structural checks."
+}

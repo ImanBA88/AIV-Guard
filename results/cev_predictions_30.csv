@@ -1,0 +1,788 @@
+case_id,task_name,gold_label,gold_binary,agent1_label,evidence,requirement,parsed,structural_pass,review_action,issues,span_matched,replacement_a,replacement_b,candidate_a,candidate_b,clarification_question,human_semantic_check,raw_response,seconds,status
+75,HumanEval/31,vagueness,AMBIGUOUS,AMBIGUOUS,a number,"def is_prime(n):
+    """"""Return true if a number is prime.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,a number,a positive integer,an integer greater than 1,"def is_prime(n):
+    """"""Return true if a positive integer is prime.
+    """"""","def is_prime(n):
+    """"""Return true if an integer greater than 1 is prime.
+    """"""",Is the function intended to work with any integer or specifically positive integers greater than 1?,PENDING,"```json
+{
+  ""replacement_a"": ""a positive integer"",
+  ""replacement_b"": ""an integer greater than 1"",
+  ""clarification_question"": ""Is the function intended to work with any integer or specifically positive integers greater than 1?""
+}
+```",7.4,ok
+76,HumanEval/32,clear,CLEAR,AMBIGUOUS,"Moreover, find_zero only takes list xs having even number of coefficients
+and largest non zero coefficient as it guarantees
+a solution.","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.
+    """"""
+",True,True,HUMAN_SEMANTIC_REVIEW,,"Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.","Moreover, find_zero only takes list xs having an even number of coefficients and uses the largest non-zero coefficient to guarantee a solution.","Moreover, find_zero only accepts lists xs with an even number of coefficients and uses the largest non-zero coefficient to ensure a solution.","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having an even number of coefficients and uses the largest non-zero coefficient to guarantee a solution.
+    """"""
+","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only accepts lists xs with an even number of coefficients and uses the largest non-zero coefficient to ensure a solution.
+    """"""
+","Which behavior does 'find_zero' need to support: accepting lists with an even number of coefficients and using the largest non-zero coefficient, or only those with an even number of coefficients regardless of the largest non-zero coefficient?",PENDING,"{
+  ""replacement_a"": ""Moreover, find_zero only takes list xs having an even number of coefficients and uses the largest non-zero coefficient to guarantee a solution."",
+  ""replacement_b"": ""Moreover, find_zero only accepts lists xs with an even number of coefficients and uses the largest non-zero coefficient to ensure a solution."",
+  ""clarification_question"": ""Which behavior does 'find_zero' need to support: accepting lists with an even number of coefficients and using the largest non-zero coefficient, or only those with an even number of coefficients regardless of the largest non-zero coefficient?""
+}",5.46,ok
+77,HumanEval/32,lexical,AMBIGUOUS,AMBIGUOUS,"find_zero only takes list xs having even number of coefficients
+and largest non zero coefficient as it secures
+a solution.","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only one zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it secures
+    a solution.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,"find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it secures
+    a solution.",find_zero only takes list xs having an even number of coefficients and the largest non-zero coefficient as it secures a solution.,find_zero only takes list xs having an even number of coefficients and the largest absolute value of non-zero coefficient as it secures a solution.,"import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only one zero point, even if there are many.
+    Moreover, find_zero only takes list xs having an even number of coefficients and the largest non-zero coefficient as it secures a solution.
+    """"""","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only one zero point, even if there are many.
+    Moreover, find_zero only takes list xs having an even number of coefficients and the largest absolute value of non-zero coefficient as it secures a solution.
+    """"""",Which behavior is intended for finding the zero point of the polynomial? Should the largest coefficient or the largest absolute value of the non-zero coefficients be considered?,PENDING,"{
+  ""replacement_a"": ""find_zero only takes list xs having an even number of coefficients and the largest non-zero coefficient as it secures a solution."",
+  ""replacement_b"": ""find_zero only takes list xs having an even number of coefficients and the largest absolute value of non-zero coefficient as it secures a solution."",
+  ""clarification_question"": ""Which behavior is intended for finding the zero point of the polynomial? Should the largest coefficient or the largest absolute value of the non-zero coefficients be considered?""
+}",4.24,ok
+79,HumanEval/32,syntactic,AMBIGUOUS,AMBIGUOUS,"Moreover, find_zero only takes list xs having even number of coefficients
+and largest non zero coefficient as it guarantees
+a solution.","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,"Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.","Moreover, find_zero only takes list xs having an even number of coefficients and the largest non-zero coefficient as it guarantees a solution.","Moreover, find_zero only takes list xs having an even number of coefficients and the largest absolute value of non-zero coefficient as it guarantees a solution.","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having an even number of coefficients and the largest non-zero coefficient as it guarantees a solution.
+    """"""","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having an even number of coefficients and the largest absolute value of non-zero coefficient as it guarantees a solution.
+    """"""",Which interpretation of 'largest non-zero coefficient' is intended: the one with the highest numerical value or the one with the highest absolute value?,PENDING,"{
+  ""replacement_a"": ""Moreover, find_zero only takes list xs having an even number of coefficients and the largest non-zero coefficient as it guarantees a solution."",
+  ""replacement_b"": ""Moreover, find_zero only takes list xs having an even number of coefficients and the largest absolute value of non-zero coefficient as it guarantees a solution."",
+  ""clarification_question"": ""Which interpretation of 'largest non-zero coefficient' is intended: the one with the highest numerical value or the one with the highest absolute value?""
+}",4.13,ok
+80,HumanEval/32,vagueness,AMBIGUOUS,AMBIGUOUS,"Moreover, find_zero only takes list xs having even number of coefficients
+and largest non zero coefficient as it guarantees a solution.","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns a zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees a solution.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,"Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees a solution.","Moreover, find_zero only takes list xs having an even number of coefficients and uses the largest non-zero coefficient to guarantee a solution.","Moreover, find_zero only takes list xs having an even number of coefficients and sets the largest non-zero coefficient to ensure a solution.","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns a zero point, even if there are many.
+    Moreover, find_zero only takes list xs having an even number of coefficients and uses the largest non-zero coefficient to guarantee a solution.
+    """"""","import math
+
+
+def poly(xs: list, x: float):
+    """"""
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """"""
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """""" xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns a zero point, even if there are many.
+    Moreover, find_zero only takes list xs having an even number of coefficients and sets the largest non-zero coefficient to ensure a solution.
+    """"""",Which behavior does 'find_zero' need to follow when given a list of coefficients? Does it use the largest non-zero coefficient or set it as a value?,PENDING,"{
+  ""replacement_a"": ""Moreover, find_zero only takes list xs having an even number of coefficients and uses the largest non-zero coefficient to guarantee a solution."",
+  ""replacement_b"": ""Moreover, find_zero only takes list xs having an even number of coefficients and sets the largest non-zero coefficient to ensure a solution."",
+  ""clarification_question"": ""Which behavior does 'find_zero' need to follow when given a list of coefficients? Does it use the largest non-zero coefficient or set it as a value?""
+}",4.95,ok
+84,HumanEval/33,syntactic,AMBIGUOUS,AMBIGUOUS,"its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l but sorted.","def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l but sorted.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,"its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l but sorted.",its values at the indices that are divisible by three are equal to the values of the corresponding indices of l but sorted,its values at the indices that are multiples of three are equal to the values of the corresponding indices of l but sorted,"def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indices that are divisible by three are equal to the values of the corresponding indices of l but sorted
+    """"""","def sort_third(l: list):
+    """"""This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indices that are multiples of three are equal to the values of the corresponding indices of l but sorted
+    """"""",Which behavior is intended for indices that are divisible by three? Are they meant to be equal or sorted?,PENDING,"{
+  ""replacement_a"": ""its values at the indices that are divisible by three are equal to the values of the corresponding indices of l but sorted"",
+  ""replacement_b"": ""its values at the indices that are multiples of three are equal to the values of the corresponding indices of l but sorted"",
+  ""clarification_question"": ""Which behavior is intended for indices that are divisible by three? Are they meant to be equal or sorted?""
+}",3.87,ok
+108,HumanEval/52,semantic,AMBIGUOUS,AMBIGUOUS,numbers in the list l are below threshold t.,"def below_threshold(l: list, t: int):
+    """"""Return True if numbers in the list l are below threshold t.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,numbers in the list l are below threshold t.,all elements in the list l have values less than threshold t.,every number within the list l is smaller than the threshold t.,"def below_threshold(l: list, t: int):
+    """"""Return True if all elements in the list l have values less than threshold t.
+    """"""","def below_threshold(l: list, t: int):
+    """"""Return True if every number within the list l is smaller than the threshold t.
+    """"""",Which behavior do you intend for the function to exhibit when determining if all numbers in the list are below the threshold?,PENDING,"```json
+{
+  ""replacement_a"": ""all elements in the list l have values less than threshold t."",
+  ""replacement_b"": ""every number within the list l is smaller than the threshold t."",
+  ""clarification_question"": ""Which behavior do you intend for the function to exhibit when determining if all numbers in the list are below the threshold?""
+}
+```",2.91,ok
+112,HumanEval/53,lexical,AMBIGUOUS,AMBIGUOUS,Combine two numbers x and y,"def add(x: int, y: int):
+    """"""Combine two numbers x and y
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,Combine two numbers x and y,Sum two integers x and y,Merge two numeric values x and y,"def add(x: int, y: int):
+    """"""Sum two integers x and y
+    """"""","def add(x: int, y: int):
+    """"""Merge two numeric values x and y
+    """"""",Which behavior does 'Combine two numbers x and y' refer to: summing or merging?,PENDING,"```json
+{
+  ""replacement_a"": ""Sum two integers x and y"",
+  ""replacement_b"": ""Merge two numeric values x and y"",
+  ""clarification_question"": ""Which behavior does 'Combine two numbers x and y' refer to: summing or merging?""
+}
+```",2.34,ok
+113,HumanEval/53,semantic,AMBIGUOUS,AMBIGUOUS,Combine two values x and y,"def add(x: int, y: int):
+    """"""Combine two values x and y
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,Combine two values x and y,Sum two values x and y,Merge two values x and y,"def add(x: int, y: int):
+    """"""Sum two values x and y
+    """"""","def add(x: int, y: int):
+    """"""Merge two values x and y
+    """"""",Which behavior does 'Combine two values x and y' refer to: summing or merging?,PENDING,"```json
+{
+  ""replacement_a"": ""Sum two values x and y"",
+  ""replacement_b"": ""Merge two values x and y"",
+  ""clarification_question"": ""Which behavior does 'Combine two values x and y' refer to: summing or merging?""
+}
+```",2.44,ok
+126,HumanEval/65,clear,CLEAR,AMBIGUOUS,"shift > number of digits, return digits reversed.","
+def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    """"""
+",True,True,HUMAN_SEMANTIC_REVIEW,,"shift > number of digits, return digits reversed.","shift > number of digits, return the digits of x in reverse order.","shift > number of digits, return the digits of x shifted left by the difference between the number of digits and shift.","
+def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return the digits of x in reverse order.
+    """"""
+","
+def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return the digits of x shifted left by the difference between the number of digits and shift.
+    """"""
+",Which behavior do you intend when shift is greater than the number of digits? Reverse the digits or shift them left?,PENDING,"```json
+{
+  ""replacement_a"": ""shift > number of digits, return the digits of x in reverse order."",
+  ""replacement_b"": ""shift > number of digits, return the digits of x shifted left by the difference between the number of digits and shift."",
+  ""clarification_question"": ""Which behavior do you intend when shift is greater than the number of digits? Reverse the digits or shift them left?""
+}
+```",4.17,ok
+128,HumanEval/65,semantic,AMBIGUOUS,AMBIGUOUS,"shift > number of digits, reverse the entire sequence of digits.","def circular_shift(x, shift):
+    """"""Circular shift the digits in the integer x, shift the digits to the right by shift 
+    and return the outcome as a string.
+    If shift > number of digits, reverse the entire sequence of digits.
+    """"""",True,False,NEEDS_REVIEW,one_replacement_unchanged,"shift > number of digits, reverse the entire sequence of digits.","shift > number of digits, shift all digits to the left by the remainder of the number of digits divided by shift.","shift > number of digits, reverse the entire sequence of digits.","def circular_shift(x, shift):
+    """"""Circular shift the digits in the integer x, shift the digits to the right by shift 
+    and return the outcome as a string.
+    If shift > number of digits, shift all digits to the left by the remainder of the number of digits divided by shift.
+    """"""","def circular_shift(x, shift):
+    """"""Circular shift the digits in the integer x, shift the digits to the right by shift 
+    and return the outcome as a string.
+    If shift > number of digits, reverse the entire sequence of digits.
+    """"""",Which behavior is intended when the shift value is greater than the number of digits in the integer? Should the digits be shifted left or reversed?,PENDING,"```json
+{
+  ""replacement_a"": ""shift > number of digits, shift all digits to the left by the remainder of the number of digits divided by shift."",
+  ""replacement_b"": ""shift > number of digits, reverse the entire sequence of digits."",
+  ""clarification_question"": ""Which behavior is intended when the shift value is greater than the number of digits in the integer? Should the digits be shifted left or reversed?""
+}
+```",3.52,ok
+129,HumanEval/65,syntactic,AMBIGUOUS,AMBIGUOUS,"shift > number of digits, return digits reversed.","def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string if shift > number of digits, return digits reversed.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,"shift > number of digits, return digits reversed.","shift > number of digits, return the digits of x shifted left.","shift > number of digits, return the digits of x reversed.","def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string if shift > number of digits, return the digits of x shifted left.
+    """"""","def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string if shift > number of digits, return the digits of x reversed.
+    """"""",Which behavior is intended when the shift value is greater than the number of digits in x?,PENDING,"```json
+{
+  ""replacement_a"": ""shift > number of digits, return the digits of x shifted left."",
+  ""replacement_b"": ""shift > number of digits, return the digits of x reversed."",
+  ""clarification_question"": ""Which behavior is intended when the shift value is greater than the number of digits in x?""
+}
+```",2.74,ok
+130,HumanEval/65,vagueness,AMBIGUOUS,AMBIGUOUS,"shift > number of digits, return digits reversed.","def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits in a direction by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,"shift > number of digits, return digits reversed.","shift > number of digits, return the digits of x in reverse order.","shift > number of digits, return the digits of x shifted to the end.","def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits in a direction by shift
+    and return the result as a string.
+    If shift > number of digits, return the digits of x in reverse order.
+    """"""","def circular_shift(x, shift):
+    """"""Circular shift the digits of the integer x, shift the digits in a direction by shift
+    and return the result as a string.
+    If shift > number of digits, return the digits of x shifted to the end.
+    """"""",Which behavior do you intend for when the shift value is greater than the number of digits in x?,PENDING,"```json
+{
+  ""replacement_a"": ""shift > number of digits, return the digits of x in reverse order."",
+  ""replacement_b"": ""shift > number of digits, return the digits of x shifted to the end."",
+  ""clarification_question"": ""Which behavior do you intend for when the shift value is greater than the number of digits in x?""
+}
+```",3.09,ok
+137,HumanEval/73,lexical,AMBIGUOUS,AMBIGUOUS,"one change, you can change one element to any other element.","def smallest_change(arr):
+    """"""
+    Given an array arr of integers, find the minimum number of elements that
+    need to be moved to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In one change, you can change one element to any other element.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,"one change, you can change one element to any other element.","In one operation, you can change one element to any other element within the array.","In one change, you can modify one element to any value in the array.","def smallest_change(arr):
+    """"""
+    Given an array arr of integers, find the minimum number of elements that
+    need to be moved to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In In one operation, you can change one element to any other element within the array.
+    """"""","def smallest_change(arr):
+    """"""
+    Given an array arr of integers, find the minimum number of elements that
+    need to be moved to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In In one change, you can modify one element to any value in the array.
+    """"""",Which interpretation of 'change' is intended: modifying an element within the array or changing it to any value?,PENDING,"{
+  ""replacement_a"": ""In one operation, you can change one element to any other element within the array."",
+  ""replacement_b"": ""In one change, you can modify one element to any value in the array."",
+  ""clarification_question"": ""Which interpretation of 'change' is intended: modifying an element within the array or changing it to any value?""
+}",3.91,ok
+144,HumanEval/76,syntactic,AMBIGUOUS,AMBIGUOUS,for some integer,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x is a simple
+    power of n and false in other cases.
+    x is a simple power of n if n**int=x for some integer
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,for some integer,for some integer k,for some integer exponent,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x is a simple
+    power of n and false in other cases.
+    x is a simple power of n if n**int=x for some integer k
+    """"""","def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x is a simple
+    power of n and false in other cases.
+    x is a simple power of n if n**int=x for some integer exponent
+    """"""",Is 'some integer' intended to specify an exponent or any arbitrary integer?,PENDING,"```json
+{
+  ""replacement_a"": ""for some integer k"",
+  ""replacement_b"": ""for some integer exponent"",
+  ""clarification_question"": ""Is 'some integer' intended to specify an exponent or any arbitrary integer?""
+}
+```",2.04,ok
+145,HumanEval/76,vagueness,AMBIGUOUS,AMBIGUOUS,n**int=x,"def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x false in other cases.
+    x is a simple power of n if n**int=x
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,n**int=x,"if math.pow(n, int(math.log(x, n))) == x","if n ** int(math.log(x, n)) == x","def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x false in other cases.
+    x is a simple power of n if if math.pow(n, int(math.log(x, n))) == x
+    """"""","def is_simple_power(x, n):
+    """"""Your task is to write a function that returns true if a number x false in other cases.
+    x is a simple power of n if if n ** int(math.log(x, n)) == x
+    """"""",Is the intention to use `math.pow` or simply exponentiation operator `**` for calculating `n**int(x)`?,PENDING,"{
+  ""replacement_a"": ""if math.pow(n, int(math.log(x, n))) == x"",
+  ""replacement_b"": ""if n ** int(math.log(x, n)) == x"",
+  ""clarification_question"": ""Is the intention to use `math.pow` or simply exponentiation operator `**` for calculating `n**int(x)`?""
+}",2.99,ok
+151,HumanEval/85,clear,CLEAR,AMBIGUOUS,add the even elements that are at odd indices..,"
+def add(lst):
+    """"""Given a non-empty list of integers lst. add the even elements that are at odd indices..
+    """"""
+",True,True,HUMAN_SEMANTIC_REVIEW,,add the even elements that are at odd indices..,"filter even elements from positions 1, 3, 5, ... in the list",select even numbers located at odd positions in the list,"
+def add(lst):
+    """"""Given a non-empty list of integers lst. filter even elements from positions 1, 3, 5, ... in the list
+    """"""
+","
+def add(lst):
+    """"""Given a non-empty list of integers lst. select even numbers located at odd positions in the list
+    """"""
+",Which behavior do you intend: filtering even elements at odd indices or selecting even numbers at odd positions?,PENDING,"```json
+{
+  ""replacement_a"": ""filter even elements from positions 1, 3, 5, ... in the list"",
+  ""replacement_b"": ""select even numbers located at odd positions in the list"",
+  ""clarification_question"": ""Which behavior do you intend: filtering even elements at odd indices or selecting even numbers at odd positions?""
+}
+```",2.96,ok
+153,HumanEval/85,semantic,AMBIGUOUS,AMBIGUOUS,odd positions,"def add(lst):
+    """"""Given a non-empty list of integers lst. Add even elements from odd positions.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,odd positions,odd indices,positions with odd numbers,"def add(lst):
+    """"""Given a non-empty list of integers lst. Add even elements from odd indices.
+    """"""","def add(lst):
+    """"""Given a non-empty list of integers lst. Add even elements from positions with odd numbers.
+    """"""",Which definition of 'odd positions' was intended: indices or positions with odd numbers?,PENDING,"```json
+{
+  ""replacement_a"": ""odd indices"",
+  ""replacement_b"": ""positions with odd numbers"",
+  ""clarification_question"": ""Which definition of 'odd positions' was intended: indices or positions with odd numbers?""
+}
+```",2.13,ok
+182,HumanEval/110,lexical,AMBIGUOUS,AMBIGUOUS,There is no limit on the number of adjusted elements between lst1 and lst2.,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an adjustment of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of adjusted elements between lst1 and lst2.
+    If it is possible to adjust elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,There is no limit on the number of adjusted elements between lst1 and lst2.,There is no limit on the number of elements exchanged between lst1 and lst2.,There is no limit on the number of elements moved between lst1 and lst2.,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an adjustment of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of elements exchanged between lst1 and lst2.
+    If it is possible to adjust elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""","def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an adjustment of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of elements moved between lst1 and lst2.
+    If it is possible to adjust elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""",Which behavior do you intend: exchanging or moving elements between lst1 and lst2?,PENDING,"```json
+{
+  ""replacement_a"": ""There is no limit on the number of elements exchanged between lst1 and lst2."",
+  ""replacement_b"": ""There is no limit on the number of elements moved between lst1 and lst2."",
+  ""clarification_question"": ""Which behavior do you intend: exchanging or moving elements between lst1 and lst2?""
+}
+```",3.76,ok
+184,HumanEval/110,syntactic,AMBIGUOUS,AMBIGUOUS,There is no limit on the number of exchanged elements between lst1 and lst2.,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers or not.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,There is no limit on the number of exchanged elements between lst1 and lst2.,There is no limit on the number of exchanged elements between lst1 and lst2 to achieve lst1 consisting solely of even numbers.,There is no limit on the number of exchanged elements between lst1 and lst2 to transform lst1 into a list of only even numbers.,"def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers or not.
+    There is no limit on the number of exchanged elements between lst1 and lst2 to achieve lst1 consisting solely of even numbers.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""","def exchange(lst1, lst2):
+    """"""In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers or not.
+    There is no limit on the number of exchanged elements between lst1 and lst2 to transform lst1 into a list of only even numbers.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return ""YES"".
+    Otherwise, return ""NO"".
+    """"""","Which behavior is intended: achieving lst1 to consist solely of even numbers, or transforming lst1 into a list of only even numbers?",PENDING,"```json
+{
+  ""replacement_a"": ""There is no limit on the number of exchanged elements between lst1 and lst2 to achieve lst1 consisting solely of even numbers."",
+  ""replacement_b"": ""There is no limit on the number of exchanged elements between lst1 and lst2 to transform lst1 into a list of only even numbers."",
+  ""clarification_question"": ""Which behavior is intended: achieving lst1 to consist solely of even numbers, or transforming lst1 into a list of only even numbers?""
+}
+```",4.17,ok
+190,HumanEval/116,vagueness,AMBIGUOUS,AMBIGUOUS,It must be implemented like this:,"def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array of integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,It must be implemented like this:,"It must be implemented like this:
+arr.sort(key=lambda x: (bin(x).count('1'), x))","It must be implemented like this:
+arr.sort(key=lambda x: (x, bin(x).count('1')))","def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array of integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+arr.sort(key=lambda x: (bin(x).count('1'), x))
+    """"""","def sort_array(arr):
+    """"""
+    In this Kata, you have to sort an array of integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+arr.sort(key=lambda x: (x, bin(x).count('1')))
+    """"""",Which sorting behavior do you intend: first by the number of ones in the binary representation or by the decimal value?,PENDING,"```json
+{
+  ""replacement_a"": ""It must be implemented like this:\narr.sort(key=lambda x: (bin(x).count('1'), x))"",
+  ""replacement_b"": ""It must be implemented like this:\narr.sort(key=lambda x: (x, bin(x).count('1')))"",
+  ""clarification_question"": ""Which sorting behavior do you intend: first by the number of ones in the binary representation or by the decimal value?""
+}
+```",3.85,ok
+192,HumanEval/124,lexical,AMBIGUOUS,AMBIGUOUS,the standard: mm-dd-yyyy,"def valid_date(date):
+    """"""You have to write a function which validates a given date string and
+    returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the standard: mm-dd-yyyy
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,the standard: mm-dd-yyyy,the standard format: mm-dd-yyyy,the standard format: yyyy-mm-dd,"def valid_date(date):
+    """"""You have to write a function which validates a given date string and
+    returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the standard format: mm-dd-yyyy
+    """"""","def valid_date(date):
+    """"""You have to write a function which validates a given date string and
+    returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the standard format: yyyy-mm-dd
+    """"""",Which standard format for dates is intended: mm-dd-yyyy or yyyy-mm-dd?,PENDING,"```json
+{
+  ""replacement_a"": ""the standard format: mm-dd-yyyy"",
+  ""replacement_b"": ""the standard format: yyyy-mm-dd"",
+  ""clarification_question"": ""Which standard format for dates is intended: mm-dd-yyyy or yyyy-mm-dd?""
+}
+```",2.66,ok
+193,HumanEval/124,semantic,AMBIGUOUS,AMBIGUOUS,The date should be formatted as: mm-dd-yyyy,"def valid_date(date):
+    """"""You have to write a function which confirms a given date string as valid
+    or invalid and returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be formatted as: mm-dd-yyyy
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,The date should be formatted as: mm-dd-yyyy,The date must be formatted as: mm-dd-yyyy,The date should be in the format: mm-dd-yyyy,"def valid_date(date):
+    """"""You have to write a function which confirms a given date string as valid
+    or invalid and returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date must be formatted as: mm-dd-yyyy
+    """"""","def valid_date(date):
+    """"""You have to write a function which confirms a given date string as valid
+    or invalid and returns True if the date is valid otherwise False.
+    The date is valid if all of the following rules are satisfied:
+    1. The date string is not empty.
+    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.
+    3. The months should not be less than 1 or higher than 12.
+    4. The date should be in the format: mm-dd-yyyy
+    """"""",Which behavior do you intend for dates to be formatted as 'mm-dd-yyyy'?,PENDING,"```json
+{
+  ""replacement_a"": ""The date must be formatted as: mm-dd-yyyy"",
+  ""replacement_b"": ""The date should be in the format: mm-dd-yyyy"",
+  ""clarification_question"": ""Which behavior do you intend for dates to be formatted as 'mm-dd-yyyy'?""
+}
+```",3.24,ok
+197,HumanEval/128,lexical,AMBIGUOUS,AMBIGUOUS,aggregate of all signs,"def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by aggregate of all signs
+    of each number in the array, represented by 1, -1 or 0.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,aggregate of all signs,sum of signs,aggregate of signs,"def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by sum of signs
+    of each number in the array, represented by 1, -1 or 0.
+    """"""","def prod_signs(arr):
+    """"""
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by aggregate of signs
+    of each number in the array, represented by 1, -1 or 0.
+    """"""",Which behavior is intended: summing the signs or aggregating them?,PENDING,"```json
+{
+  ""replacement_a"": ""sum of signs"",
+  ""replacement_b"": ""aggregate of signs"",
+  ""clarification_question"": ""Which behavior is intended: summing the signs or aggregating them?""
+}
+```",2.18,ok
+206,HumanEval/132,clear,CLEAR,AMBIGUOUS,[[]],"
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+",True,False,NEEDS_REVIEW,evidence_span_repeated|one_replacement_unchanged,,[[]],[[[]]],,,Is the intention to check for a nested bracket within the subsequence or to ensure the entire string itself is nested?,PENDING,"```json
+{
+  ""replacement_a"": ""[[]]"",
+  ""replacement_b"": ""[[[]]]"",
+  ""clarification_question"": ""Is the intention to check for a nested bracket within the subsequence or to ensure the entire string itself is nested?""
+}
+```",2.6,ok
+216,HumanEval/140,clear,CLEAR,AMBIGUOUS,"if a string has more than 2 consecutive spaces, then replace all consecutive spaces with -","
+def fix_spaces(text):
+    """"""
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, 
+    then replace all consecutive spaces with - 
+    """"""
+",True,False,NEEDS_REVIEW,one_replacement_unchanged,"if a string has more than 2 consecutive spaces, 
+    then replace all consecutive spaces with -","if a string has more than 2 consecutive spaces, then replace all consecutive spaces with -","if a string contains more than 2 spaces in a row, then replace them with -","
+def fix_spaces(text):
+    """"""
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, then replace all consecutive spaces with - 
+    """"""
+","
+def fix_spaces(text):
+    """"""
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string contains more than 2 spaces in a row, then replace them with - 
+    """"""
+",Which behavior do you intend for strings with more than 2 consecutive spaces?,PENDING,"```json
+{
+  ""replacement_a"": ""if a string has more than 2 consecutive spaces, then replace all consecutive spaces with -"",
+  ""replacement_b"": ""if a string contains more than 2 spaces in a row, then replace them with -"",
+  ""clarification_question"": ""Which behavior do you intend for strings with more than 2 consecutive spaces?""
+}
+```",4.06,ok
+234,HumanEval/155,syntactic,AMBIGUOUS,AMBIGUOUS,tuple that has the number of even digits and odd,"def even_odd_count(num):
+    """"""Given an integer return a tuple that has the number of even digits and odd respectively.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,tuple that has the number of even digits and odd,tuple that contains the count of even digits and the count of odd digits,tuple that includes the quantity of even digits and the quantity of odd digits,"def even_odd_count(num):
+    """"""Given an integer return a tuple that contains the count of even digits and the count of odd digits respectively.
+    """"""","def even_odd_count(num):
+    """"""Given an integer return a tuple that includes the quantity of even digits and the quantity of odd digits respectively.
+    """"""",Which behavior is intended: counting occurrences or including quantities?,PENDING,"```json
+{
+  ""replacement_a"": ""tuple that contains the count of even digits and the count of odd digits"",
+  ""replacement_b"": ""tuple that includes the quantity of even digits and the quantity of odd digits"",
+  ""clarification_question"": ""Which behavior is intended: counting occurrences or including quantities?""
+}
+```",3.36,ok
+235,HumanEval/155,vagueness,AMBIGUOUS,AMBIGUOUS,The description does not otherwise specify which interpretation should be used.,"def even_odd_count(num):
+    """"""Given a number. return a tuple that has the number of even and odd digits respectively.
+    The description does not otherwise specify which interpretation should be used.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,The description does not otherwise specify which interpretation should be used.,The description does not otherwise specify whether to count the first occurrence of even or odd digits.,The description does not otherwise specify whether to count all even digits or just the first one.,"def even_odd_count(num):
+    """"""Given a number. return a tuple that has the number of even and odd digits respectively.
+    The description does not otherwise specify whether to count the first occurrence of even or odd digits.
+    """"""","def even_odd_count(num):
+    """"""Given a number. return a tuple that has the number of even and odd digits respectively.
+    The description does not otherwise specify whether to count all even digits or just the first one.
+    """"""",Which interpretation of counting even or odd digits is intended?,PENDING,"```json
+{
+  ""replacement_a"": ""The description does not otherwise specify whether to count the first occurrence of even or odd digits."",
+  ""replacement_b"": ""The description does not otherwise specify whether to count all even digits or just the first one."",
+  ""clarification_question"": ""Which interpretation of counting even or odd digits is intended?""
+}
+```",3.83,ok
+241,HumanEval/159,clear,CLEAR,AMBIGUOUS,"if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.","
+def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    """"""
+",True,True,HUMAN_SEMANTIC_REVIEW,,"if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.","if there are not enough remaining carrots, you will eat all remaining carrots and still be hungry.","if there are not enough remaining carrots, you will eat all remaining carrots, but will not be hungry anymore.","
+def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots and still be hungry.
+    """"""
+","
+def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will not be hungry anymore.
+    """"""
+",Which behavior is intended when there are not enough remaining carrots? Will the rabbit still feel hungry or not?,PENDING,"{
+  ""replacement_a"": ""if there are not enough remaining carrots, you will eat all remaining carrots and still be hungry."",
+  ""replacement_b"": ""if there are not enough remaining carrots, you will eat all remaining carrots, but will not be hungry anymore."",
+  ""clarification_question"": ""Which behavior is intended when there are not enough remaining carrots? Will the rabbit still feel hungry or not?""
+}",4.39,ok
+243,HumanEval/159,semantic,AMBIGUOUS,AMBIGUOUS,"if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.","def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.
+    The intended semantic scope of this requirement is not otherwise specified.
+    """"""",True,True,HUMAN_SEMANTIC_REVIEW,,"if there are not enough remaining carrots, you will eat all remaining carrots, but will still be hungry.","if there are not enough remaining carrots, you will eat all remaining carrots and then be completely satisfied.","if there are not enough remaining carrots, you will eat all remaining carrots but will not be hungry anymore.","def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots and then be completely satisfied.
+    The intended semantic scope of this requirement is not otherwise specified.
+    """"""","def eat(number, need, remaining):
+    """"""
+    You're a hungry rabbit, and you already have eaten a certain number of carrots,
+    but now you need to eat more carrots to complete the day's meals.
+    you should return an array of [ total number of eaten carrots after your meals,
+                                    the number of carrots left after your meals ]
+    if there are not enough remaining carrots, you will eat all remaining carrots but will not be hungry anymore.
+    The intended semantic scope of this requirement is not otherwise specified.
+    """"""",Which behavior is intended when there are not enough remaining carrots? Will the rabbit still feel hungry or be completely satisfied?,PENDING,"```json
+{
+  ""replacement_a"": ""if there are not enough remaining carrots, you will eat all remaining carrots and then be completely satisfied."",
+  ""replacement_b"": ""if there are not enough remaining carrots, you will eat all remaining carrots but will not be hungry anymore."",
+  ""clarification_question"": ""Which behavior is intended when there are not enough remaining carrots? Will the rabbit still feel hungry or be completely satisfied?""
+}
+```",4.56,ok
